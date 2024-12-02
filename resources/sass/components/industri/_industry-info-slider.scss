@@ -1,0 +1,76 @@
+// Mixins
+@mixin card-hover-effect {
+    transition: .3s ease-in-out;
+    &:hover {
+        background-color: #f3f3f3;
+        box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+    }
+}
+
+// Styles
+.industry-info {
+    margin-top: 35px;
+    margin-bottom: 40px;
+    .custom-container {
+        .industry-info__cards {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 20px;
+            @media (max-width: $breakpoint768) {
+                justify-content: space-evenly;
+                gap: 15px;
+            }
+            .industry-info__card {
+                width: 310px;
+                @include card-hover-effect;
+                transition: .3s ease-in-out;
+                &:hover {
+                    @include card-hover-effect;
+                }
+                @media (max-width: $breakpoint768) {
+                    width: 100%;
+                }
+                .industry-info__card-slider {
+                    .swiper {
+                        margin-top: 0;
+                        &-button-next,
+                        &-button-prev {
+                            color: #fff;
+                            z-index: 10;
+                            &::after {
+                                font-size: 25px;
+                            }
+                        }
+                        .industry-slider__img {
+                            padding: 0;
+                            @media (max-width: $breakpoint480) {
+                                padding: 0;
+                            }
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .industry-info__card-text {
+                        margin: 15px 15px 20px 15px;
+                        .industry-info__title {
+                            margin-bottom: 15px;
+                            font-family: 'GalanoGrotesque', sans-serif;
+                            font-size: 18px;
+                            color: #000;
+                            &-span {
+                                font-family: 'GalanoGrotesque-Bold', sans-serif;
+                            }
+                        }
+                        .industry-info__descr {
+                            font-family: 'GalanoGrotesque-Light', sans-serif;
+                            color: #454545;
+                            max-width: 230px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

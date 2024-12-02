@@ -1,0 +1,382 @@
+.cabinet_section {
+    padding-top: 100px;
+    position: relative;
+    @media (min-width: $breakpoint768) {
+        padding-top: 120px;
+        min-height: calc(100vh - 265px);
+    }
+
+    .left_label_section {
+        position: absolute;
+        left: 0;
+        top: 180px;
+        z-index: 10;
+        width: 80px;
+        height: 320px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px; //transform: rotate(270deg);
+        box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+        color: #000;
+        background-color: $greyColor;
+
+        @media (min-width: $breakpoint480) {
+            width: 80px;
+            height: 340px;
+        }
+        @media (min-width: $breakpoint768) {
+            width: 100px;
+            height: 340px;
+        }
+        @media (min-width: $containerWidth) {
+            width: 180px;
+            height: 380px;
+        }
+
+        @media (max-width: 650px) {
+            display: none;
+        }
+
+    }
+    .left_label_text {
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        font-size: 26px;
+        @media (min-width: $breakpoint768) {
+            font-size: 32px;
+        }
+    }
+
+    .cabinet_content_container {
+        padding-left: 50px;
+        padding-bottom: 20px;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        transition: padding 0.5s ease-in-out;
+        @media (min-width: $breakpoint768) {
+            padding-left: 90px;
+            padding-bottom: 40px;
+
+        }
+        @media (max-width: 970px) {
+            grid-template-columns: 1fr;
+        }
+        @media (max-width: 650px) {
+            padding-left: 0;
+        }
+    }
+    .cabinet_content {
+
+    }
+    .cabinet_sidebar {
+        padding-top: 40px;
+        font-size: 18px;
+        .user_name {
+            margin-bottom: 35px;
+            text-align: center;
+            font-size: 25px;
+            font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        }
+        .user_photo_container {
+            width: 100%;
+            border-top-right-radius: 20px;
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+
+            max-width: 250px;
+            display: flex;
+            float: left;
+            @media (min-width: $breakpoint768) {
+                margin-bottom: 70px;
+            }
+            @media (max-width: 560px) {
+                max-width: unset;
+            }
+
+            .user_photo {
+                width: 100%;
+                box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+            }
+        }
+
+
+        .cabinet_sidebar_nav {
+            display: flex;
+            float: right;
+            flex-direction: column;
+            @media (min-width: 970px) {
+                width: 100%;
+            }
+            @media (max-width: 560px) {
+                width: 100%;
+            }
+
+        }
+        .cabinet_sidebar_item {
+            margin-bottom: 20px;
+            @media (min-width: $breakpoint768) {
+                margin-bottom: 30px;
+            }
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        .cabinet_sidebar_link {
+            display: flex;
+            align-items: center;
+        }
+        .cabinet_sidebar_img {
+            width: 20px;
+            margin-right: 20px;
+        }
+        .cabinet_sidebar_title {
+            &.active {
+                text-decoration: underline;
+            }
+            @media (min-width: $breakpoint768) {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .cabinet_block {
+        border-radius: 20px;
+        background-color: $greyColor;
+        box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        @media (min-width: $breakpoint768) {
+            padding: 35px 40px;
+        }
+    }
+
+    .cabinet_right_block {
+        padding-right: 10px;
+
+        @media (min-width: $breakpoint768) {
+            padding-left: 30px;
+        }
+        @media (max-width: 650px) {
+            padding-right: 0;
+        }
+    }
+
+    .cabinet_left_block {
+        @media (max-width: 970px) {
+            padding: 0 40px;
+        }
+        @media (max-width: 560px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+    }
+
+    //Billing Information
+
+    .billing_block {
+        border-radius: 20px;
+        background-color: $greyColor;
+        box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        @media (min-width: $breakpoint768) {
+            padding: 35px 40px;
+        }
+    }
+
+    .security_block {
+        border-radius: 20px;
+        background-color: $greyColor;
+        box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        @media (min-width: $breakpoint768) {
+            padding: 35px 40px;
+        }
+    }
+
+    .addres_pad_top {
+        padding-top: 15px;
+    }
+
+    .account-block_label-line {
+        text-decoration: underline;
+        padding-top: 20px;
+    }
+
+    .green-text {
+        color: #45A73C;
+        font-weight: bold;
+    }
+
+
+    .password-input-container {
+        position: relative; /* Folosim relative pentru a plasa corect butonul de vizibilitate */
+        display: flex;
+        align-items: center;
+    }
+
+    .account-block_input {
+        width: 100%; /* Lățime fixă (ajustează după necesități) */
+        max-width: 350px;
+        padding-right: 40px; /* Spațiu pentru butonul de vizibilitate */
+        border-radius: 20px; /* Colțuri rotunjite */
+        border: 1px solid #ccc; /* Contur */
+        padding: 10px; /* Spațiu interior */
+        box-sizing: border-box; /* Include padding și border în dimensiunile elementului */
+    }
+
+    .password-visibility-toggle {
+        position: relative; /* Plasat în interiorul inputului */
+        right: 35px; /* Ajustează distanța față de marginea dreaptă */
+        cursor: pointer; /* Schimbă cursorul la hover */
+        display: flex;
+        align-items: center;
+        z-index: 10; /* Asigură-te că este deasupra inputului */
+    }
+
+    .password-toggle_img {
+        width: 20px; /* Ajustează dimensiunea imaginii dacă este necesar */
+        height: auto;
+    }
+
+    .password-toggle_text {
+        display: none; /* Ascunde textul, păstrează doar imaginea, dacă dorești */
+    }
+
+    //Orders Information
+    .button-orders {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .start-shopping-btn {
+        position: relative;
+        margin-left: 20px;
+        text-decoration: underline;
+      }
+
+      .start-shopping-btn .btn {
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      .button-shop {
+        background-color: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+      }
+
+      .icon-shop {
+        width: 20px; /* Ajustează dimensiunea imaginii dacă este necesar */
+        height: 20px;
+
+    }
+
+    .account-block_delete {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .delete_account_container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .delete_block, .confirm_block {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .delete-edit_button {
+        user-select: none;
+    }
+
+    .delete_block.active, .confirm_block.active {
+        display: block;
+    }
+
+    .delete_block.active ~ .confirm_block {
+        display: none;
+    }
+
+    .confirm_block.active ~ .delete_block {
+        display: none;
+    }
+
+    .account-block_delete_img {
+        width: 20px;
+        //margin-right: 10px;
+    }
+
+    .account-block_delete_text {
+        font-size: 16px;
+    }
+
+    .account-block_deletecont {
+        margin-bottom: 5px;
+    }
+
+    .delete_block {
+        display: flex; /* Folosește flexbox pentru alinierea pe același rând */
+        justify-content: space-between; /* Distribuie elementele pe toată lățimea */
+        margin-bottom: 20px; /* Spațiu între secțiuni */
+    }
+
+    .account-block_deletecont {
+        margin: 0; /* Elimină marginea pentru o aliniere corectă */
+        font-size: 18px; /* Ajustează dimensiunea textului după cum este necesar */
+        @media (min-width: $breakpoint768) {
+            font-size: 25px;
+            line-height: unset;
+        }
+    }
+
+    .account-block_delete_img {
+        justify-content: flex-end;
+        //padding-top: 10px;
+        width: 25px; /* Ajustează dimensiunea icoanei */
+       // margin-left: 100px; /* Spațiu între text și icoană */
+    }
+
+
+
+
+
+    .delete_confirmation {
+        margin-top: 20px; /* Spațiu între blocuri */
+        padding: 20px;
+        border: 1px solid #ccc; /* Contur pentru secțiune */
+        border-radius: 5px; /* Colțuri rotunjite */
+        background-color: #f9f9f9; /* Fundal deschis */
+      }
+      .confirmation_buttons {
+        margin-top: 15px; /* Spațiu între câmpul de parolă și butoane */
+
+      }
+      .account-block_back_btn, .account-block_confirm_btn {
+        background-color: transparent;
+        margin-right: 10px; /* Spațiu între butoane */
+      }
+
+
+      .transparent-button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .custom-container {
+        padding: 0 10px;
+    }
+}

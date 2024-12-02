@@ -1,0 +1,276 @@
+.add_form_btn_container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    @media (min-width: $breakpoint1025) {
+        margin-bottom: 60px;
+    }
+
+}
+
+
+.full-form {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+
+    &__action {
+        width: 100%;
+        @media(min-width: $breakpointMd) {
+            margin-bottom: 40px;
+        }
+    }
+    &-right {
+
+        @media(min-width: $breakpointMd) {
+            margin-top: -45px;
+        }
+    }
+    &_input {
+        background-color: #fafafa;
+        font-size: 13px;
+        border-radius: 25px;
+        padding: 10px 15px ;
+        width: 100%;
+        color: #5E5E5E;
+        border: 1px solid #cdcbcb;
+        overflow: hidden !important;
+        @media (min-width: $breakpoint480) {
+            padding: 15px 20px;
+            font-size: 16px;
+        }
+        @media (min-width: $breakpoint768) {
+            max-width: 380px;
+        }
+
+    }
+    &_select-container {
+        position: relative;
+        svg {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 18px;
+            height: 18px;
+            //fill: #cdcbcb;
+            stroke: #cdcbcb;
+            transform: rotate(180deg);
+            pointer-events: none;
+            @media (min-width: $breakpoint480) {
+                right: 17px;
+                top: 16px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    &_select {
+        width: 100%;
+        height: 40px;
+        -moz-appearance:none; /* Firefox */
+        -webkit-appearance:none; /* Safari and Chrome */
+        appearance:none;
+        @media (min-width: $breakpoint480) {
+            height: 54px;
+        }
+    }
+    .upload_photo {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor:pointer;
+        &.transparent-color {
+            color: transparent;
+        }
+        &::-webkit-file-upload-button {
+            display: none;
+            font-size: initial;
+        }
+
+    }
+    .user_photo {
+        position: absolute;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .full-form-btn {
+        width: calc(50% - 10px);
+        color: #5E5E5E;
+        border: 1px solid #cdcbcb;
+        &.active {
+            background-color: #e8e8e8;
+        }
+    }
+    .add_phone {
+        text-decoration: underline;
+        color: #5E5E5E;
+        font-size: 15px;
+        cursor:pointer;
+    }
+    .addition-phone {
+        display: none;
+        &.active {
+            display: flex;
+        }
+    }
+    .addition_education {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    .full-form-policy {
+        text-decoration: underline;
+        margin-top: 8px;
+    }
+    .block_title {
+        font-size: 20px;
+        font-family: GalanoGrotesque-SemiBold, sans-serif;
+        margin-bottom: 20px;
+    }
+    &_description {
+        background-color: #fafafa;
+        font-size: 13px;
+        border-radius: 25px;
+        padding: 15px 10px 15px 20px;
+        width: 100%;
+        height: 100px;
+        color: #5E5E5E;
+        border: 1px solid #cdcbcb;
+        @media (min-width: $breakpoint480) {
+            font-size: 16px;
+        }
+    }
+    .skills_block {
+        margin-top: 20px;
+
+        @media (min-width: $breakpoint1025) {
+            margin-top: 40px;
+        }
+    }
+    //.select2-container {
+    //    background-color: #fafafa;
+    //    font-size: 16px;
+    //    border-radius: 25px;
+    //    padding: 15px 0 15px 20px;
+    //    width: 100%;
+    //    max-width: 380px;
+    //    color: #5E5E5E;
+    //    border: 1px solid #cdcbcb;
+    //}
+    .select2-selection {
+        background-color: #fafafa;
+        font-size: 13px;
+        border-radius: 25px;
+        padding: 7px 15px;
+        width: 100%;
+        max-width: 380px;
+        color: #5E5E5E;
+        border: 1px solid #cdcbcb;
+        @media (min-width: $breakpoint480) {
+            padding: 11px 0 11px 20px;
+            font-size: 16px;
+        }
+    }
+    .select2-selection__choice {
+        padding: 5px !important;
+        border-radius: 7px !important;
+        margin-top: 4px !important;
+
+    }
+    .remove_btn {
+        position: absolute;
+        top: 2px;
+        right: -30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        @media (min-width: $breakpoint480) {
+            top: 8px;
+            right: -50px;
+        }
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: #5E5E5E;
+        }
+        &:hover {
+            background-color:#fafafa ;
+        }
+    }
+    .policy_text {
+        font-size: 13px;
+        @media (min-width: $breakpoint768) {
+            font-size: 17px;
+        }
+    }
+
+    &-top-container {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: "header";
+        align-items: end;
+        &>div {
+            display: grid;
+            grid-row: 1;
+            grid-column: 1;
+            height: min-content;
+            justify-items: center;
+        }
+        & div:nth-child(1) {
+            z-index: 2;
+            pointer-events: none;
+            user-select: none;
+            &>* {
+                color: white !important;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.full-form-label_description {
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.full-form-photo-container {
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    aspect-ratio: 1;
+    background-color: #a1a1a1;
+    cursor: pointer;
+}
+
+.full-form-photo-label {
+    color: #5E5E5E;
+    font-size: 13px;
+    margin-bottom: 10px;
+    @media (min-width: $breakpoint768) {
+        margin-bottom: 0;
+        font-size: 17px;
+    }
+}
+
+.full-form-photo-limit {
+    font-size: 12px;
+    color: #5E5E5E;
+    @media (max-width: 576px) {
+        margin-bottom: 20px;
+    }
+
+}
+
+

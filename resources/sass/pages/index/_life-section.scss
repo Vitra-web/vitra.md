@@ -1,0 +1,256 @@
+.life-section {
+
+    //padding-top: 50px;
+    //padding-bottom: 50px;
+
+    .swiper-text__body {
+        margin-bottom: 25px;
+        @media (min-width: 1251px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &-title {
+            font-family: 'GalanoGrotesque', sans-serif;
+            font-size: 24px;
+            @media (min-width: 520px) {
+                width: 70%;
+                font-size: 36px;
+                margin-bottom: 0;
+            }
+            span {
+                font-family: 'GalanoGrotesque-Bold', sans-serif;
+            }
+        }
+
+    }
+
+
+    .lifeSwiper {
+        //margin-top: 60px;
+        width: 100%;
+        height: 100%;
+
+            .swiper-wrapper {
+                .swiper-slide {
+                    //max-width: calc(25%);
+                    max-width: $industrySliderWidth;
+
+                    overflow: visible;
+                    height: 250px;
+                    @media (max-width: $breakpoint768) {
+                        max-width: calc(50%);
+                    }
+                    @media (max-width: $breakpoint480) {
+                        max-width: 250px;
+                        height: 300px;
+                    }
+                    //height: 300px;
+                    &--visible {
+                        display: block;
+                    }
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: 220px;
+                        object-fit: cover;
+                        @media (max-width: $breakpoint480) {
+                            height: 280px;
+                        }
+                    }
+                    &__img {
+                        //width: 290px;
+                        //background-size: 290px 300px;
+                        background-size: $industrySliderWidth 230px;
+                        background-repeat: no-repeat;
+                        object-fit: cover;
+                        @media (max-width: $breakpoint480) {
+                            background-size: 250px 280px;
+                        }
+                    }
+
+                }
+            }
+
+
+        &-scrollbar {
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        .swiper-scrollbar-drag {
+            // width: 70% !important;
+            cursor: grab;
+            background: #24a64c;
+            &:hover {
+                height: 10px;
+                top: -3px;
+            }
+        }
+
+        .swiper-scrollbar-horizontal {
+            bottom: 10px;
+            width: 100%;
+            left: 0;
+            //background-color: #24a64c;
+        }
+    }
+}
+
+.life {
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 12vh);
+    gap: 10px;
+    @media (min-width: 900px) {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(5, 4vw);
+        gap: $industryDesktopGap;
+    }
+
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__text {
+        grid-column-start: 1;
+        grid-column-end: 13;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        letter-spacing: 5px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #24a64c;
+        padding-left: 8px;
+        color: #fff;
+        position: relative;
+        @media (min-width: 900px) {
+            justify-content: center;
+            grid-column-start: 1;
+            grid-column-end: 6;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        &--title {
+            font-family: 'GalanoGrotesque', sans-serif;
+            font-size: 50px;
+            color: #fff;
+        }
+
+    }
+
+    &-img {
+        position: relative;
+    }
+
+
+    &-img1 {
+        grid-column-start: 1;
+        grid-column-end: 7;
+        grid-row-start: 3;
+        grid-row-end: 6;
+        @media (min-width: 900px) {
+            grid-column-start: 1;
+            grid-column-end: 6;
+            grid-row-start: 2;
+            grid-row-end: 6;
+        }
+
+    }
+    &-img2 {
+        grid-column-start: 7;
+        grid-column-end: 13;
+        grid-row-start: 3;
+        grid-row-end: 6;
+        @media (min-width: 900px) {
+            grid-column-start: 6;
+            grid-column-end: 10;
+            grid-row-start: 1;
+            grid-row-end: 6;
+        }
+
+    }
+
+    &-img3 {
+        grid-column-start: 1;
+        grid-column-end: 13;
+        grid-row-start: 6;
+        grid-row-end: 8;
+        @media (min-width: 900px) {
+            grid-column-start: 10;
+            grid-column-end: 13;
+            grid-row-start: 1;
+            grid-row-end: 4;
+            margin-bottom: 40px;
+        }
+
+    }
+
+    &-more-container {
+        display: none;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 20px 15px;
+        grid-column-start: 1;
+        grid-column-end: 13;
+        grid-row-start: 6;
+        grid-row-end: 8;
+        background-color: #24a64c;
+        @media (min-width: 900px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            grid-column-start: 10;
+            grid-column-end: 13;
+            grid-row-start: 4;
+            grid-row-end: 6;
+            margin-top: -40px;
+        }
+        &:hover .life-more {
+            text-decoration: underline;
+        }
+        &:hover .industry-more_btn {
+            background-color: $buttonBackgroundHover;
+        }
+    }
+
+
+    &-more {
+        color: #fff;
+        font-size: 25px;
+        line-height: 30px;
+        @media (min-width: $breakpoint768) {
+            margin-bottom: 20px;
+            font-size: 32px;
+            line-height: 38px;
+
+        }
+    }
+
+    &-more_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        background-color: $buttonBackground;
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+
+}
+.swiper-scrollbar-drag {
+    cursor: grab;
+    &:hover {
+        height: 10px;
+        top: -3px;
+    }
+}

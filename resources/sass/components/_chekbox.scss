@@ -1,0 +1,78 @@
+.checkbox__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    @media (max-width: $breakpoint480) {
+        gap: 5px;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    @media (min-width: $breakpoint1025) {
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+    .checkbox__input {
+        display: none;
+        &:checked+.fake::before {
+            opacity: 1;
+        }
+    }
+    .fake {
+        height: 16px;
+        width: 16px;
+        box-sizing: border-box;
+        border: 1px solid #000;
+        display: block;
+        margin-right: 15px;
+        position: relative;
+        @media (max-width: $breakpoint768) {
+            margin-right: 5px;
+            height: 14px;
+            width: 14px;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            height: 9px;
+            width: 9px;
+            background: #000;
+            top: 50%;
+            box-sizing: border-box;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: 0.3s all ease;
+        }
+    }
+    .fake_disabled {
+        height: 16px;
+        width: 16px;
+        border: 1px solid rgba(12, 12, 12, 0.6);
+        display: block;
+        border-radius: 50%;
+        margin-right: 15px;
+        position: relative;
+        @media (max-width: $breakpoint768) {
+            margin-right: 5px;
+            height: 14px;
+            width: 14px;
+        }
+    }
+}
+.checkbox_text {
+    width: 80%;
+    font-size: 12px;
+    @media (min-width: $breakpoint480) {
+        font-size: 14px;
+        width: 90%;
+    }
+    @media (min-width: $breakpoint1025) {
+        width: 95%;
+        font-size: 16px;
+    }
+}
+
+.checkbox_link {
+    text-decoration: underline;
+}

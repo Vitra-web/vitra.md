@@ -1,0 +1,250 @@
+.career-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+    @media (min-width: $breakpoint480) {
+        padding: 40px;
+    }
+    @media (min-width: $breakpoint1025) {
+        padding: 60px 80px;
+    }
+    &__action {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+        @media (max-width: 804px) {
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+        &-select-container {
+            position: relative;
+            @media (max-width: 480px) {
+                width: 100%;
+            }
+            svg {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                //fill: #cdcbcb;
+                stroke: #cdcbcb;
+                transform: rotate(180deg);
+                pointer-events: none;
+                @media (min-width: $breakpoint480) {
+                    top: 16px;
+                    right: 17px;
+                }
+            }
+        }
+        &-select {
+            height: 40px;
+            background-color: #fafafa;
+            font-size: 13px;
+            border-radius: 25px;
+            padding: 10px 15px;
+            width: 100%;
+            border: 1px solid #cdcbcb;
+            //color: #a1a1a1;
+            color: #5E5E5E;
+            -moz-appearance:none; /* Firefox */
+            -webkit-appearance:none; /* Safari and Chrome */
+            @media (min-width: $breakpoint480) {
+                height: 54px;
+                width: 275px;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+        option[value=""][disabled] {
+            display: none;
+        }
+        .name-label {
+            position: relative;
+            @media (max-width: $breakpoint480) {
+                width: 100%;
+            }
+
+        }
+        .input-text {
+            background-color: #fafafa;
+            font-size: 13px;
+            border-radius: 25px;
+            padding: 10px 15px;
+            width: 100%;
+            color: #5E5E5E;
+            border: 1px solid #cdcbcb;
+            @media (min-width: $breakpoint480) {
+                width: 275px;
+                padding: 15px 20px;
+                font-size: 16px;
+            }
+
+            &-upload {
+                position: relative;
+                height: 40px;
+                @media (min-width: $breakpoint480) {
+                    height: 54px;
+                }
+                &.transparent-color {
+                    color: transparent;
+                }
+                &::-webkit-file-upload-button {
+                    display: none;
+                    font-size: initial;
+                }
+                &::after {
+                    position: absolute;
+                    content: '';
+                    background: url(../../images/download-img.png);
+                    background-repeat: no-repeat;
+                    width: 15px;
+                    height: 15px;
+                    right: 10px;
+                    top: 12px;
+                    @media (min-width: $breakpoint480) {
+                        right: 18px;
+                        top: 20px;
+                    }
+                }
+            }
+        }
+        .test {
+            position: absolute;
+            left: 0;
+            font-size: 13px;
+            padding: 13px 15px;
+            color: #a1a1a1;
+            pointer-events: none;
+            @media (min-width: $breakpoint480) {
+                padding: 19px 20px;
+                font-size: 16px;
+            }
+            &.transparent-color {
+                color: transparent;
+            }
+        }
+    }
+    &__more {
+        margin-top: 15px;
+        margin-bottom: 40px;
+        //font-family: GalanoGrotesque-Medium, sans-serif;
+        font-size: 25px;
+        color: #000;
+        text-align: center;
+        @media (min-width: $breakpoint480) {
+        font-size: 30px;
+    }
+
+    }
+    &-btn {
+        width: 265px;
+        height: 54px;
+        @media (max-width: 780px) {
+            width: 200px;
+            height: 40px;
+        }
+        //@media (max-width: $breakpoint480) {
+        //    width: 100%;
+        //}
+    }
+
+}
+
+.career-upload-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (max-width: $breakpoint480) {
+        width: 100%;
+    }
+    @media (min-width: 805px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+    }
+}
+
+.career-form__radio {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    //margin-top: 50px;
+    @media (max-width: $breakpoint480) {
+        flex-direction: row;
+    }
+    &-body {
+
+        //@media (min-width: $breakpoint1025) {
+        //    display: flex;
+        //    justify-content: space-between;
+        //}
+    }
+    .checkbox__item {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        @media (max-width: $breakpoint480) {
+            gap: 5px;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+        .checkbox__input {
+            display: none;
+            &:checked+.fake::before {
+                opacity: 1;
+            }
+        }
+        .fake {
+            height: 14px;
+            width: 14px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            display: block;
+            margin-right: 15px;
+            position: relative;
+            @media (min-width: $breakpoint480) {
+                height: 16px;
+                width: 16px;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                height: 8px;
+                width: 8px;
+                background: #000;
+                top: 50%;
+                box-sizing: border-box;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: 0.3s all ease;
+                @media (min-width: $breakpoint480) {
+                    height: 9px;
+                    width: 9px;
+                }
+            }
+        }
+    }
+    //.checkbox_text {
+    //    @media (max-width: $breakpoint480) {
+    //        width: 75%;
+    //    }
+    //}
+
+}
+
+

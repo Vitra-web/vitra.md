@@ -1,0 +1,135 @@
+.login-logo {
+    padding-top: 30px;
+    padding-left: 20px;
+    display: flex;
+}
+.login-logo svg {
+    transform: rotate(-90deg);
+}
+.login_img {
+    width: 100px;
+    margin-left: 10px;
+}
+
+
+.login_page_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+}
+
+.login-box-msg {
+    font-size: 20px;
+}
+
+.connect_btn {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    border: 1px #000 solid;
+    border-radius: 30px;
+    background-color: #fff;
+    font-size: 15px;
+}
+.connect_btn:hover {
+    background-color: #e8e8e8;
+}
+.signup_btn {
+    margin-left: 8px;
+    color: #00C2FF;
+    text-decoration: underline;
+}
+
+
+.login-input {
+    width: 100%;
+    color: #535252;
+    background-color: #fafafa;
+    font-size: 15px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid #000;
+}
+
+.login-box {
+    max-width: 385px;
+}
+.login-box > .card {
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+}
+
+.social_auth_block {
+    margin-bottom: 20px;
+
+}
+.social_text {
+    text-align: center;
+    font-size: 14px;
+}
+.social_btn {
+    width: 50px;
+    height: 50px;
+    border: 1px #000 solid;
+    background-color: #fff;
+    padding: 10px;
+}
+.social_btn:hover {
+    background-color: #e8e8e8;
+}
+.social_img {
+    width: 100%;
+}
+@media(min-width: 480px) {
+    .login-logo {
+        padding-left: 50px;
+    }
+    .login-logo svg {
+        width: 30px;
+        height: 30px;
+    }
+    .login_img {
+        width: 160px;
+        margin-left: 15px;
+    }
+
+    .login-box-msg {
+        font-size: 25px;
+    }
+    .login-card-body {
+        padding: 20px 50px;
+        border-radius: 20px;
+    }
+    .social_auth_block {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
+
+@media(min-width: 1024px) {
+
+    .login-logo {
+        padding-left: 150px;
+    }
+
+}
+.login-label {
+    position: relative;
+    width: 100%;
+}
+//.input_placeholder {
+//    position: absolute;
+//    top: -20px;
+//    left: 15px;
+//    font-size: 14px;
+//    /*margin-bottom: 5px;*/
+//}
+
+.text_error {
+    display: none;
+    color: red;
+    padding-left: 10px;
+}

@@ -1,0 +1,165 @@
+.special-form {
+    padding: 0;
+    &__title {
+        font-size: 20px;
+        font-family: GalanoGrotesque-SemiBold, sans-serif;
+        margin-bottom: 20px;
+        padding: 20px 0 20px 20px;
+
+        @media (min-width: $breakpoint480) {
+            font-size: 25px;
+        }
+        @media (min-width: $breakpoint1025) {
+            font-size: 35px;
+            margin-bottom: 30px;
+
+        }
+        @media (min-width: $containerWidth + px) {
+            padding-left: 30px;
+        }
+    }
+
+    &-image_container {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 10%,  rgba(255,255,255,0.8) 20%, rgba(255,255,255,0.6) 40%,rgba(255,255,255,0.4) 60%, rgba(255,255,255,0.2) 80%, rgba(255,255,255,0.1) 100%);
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.4) 40%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0.9) 90%, rgba(255,255,255,1) 100%);
+        }
+    }
+    &_image {
+        width: 100%;
+        height: 340px;
+        object-fit: cover;
+    }
+
+    &_right {
+        padding: 20px;
+    }
+    &_title_right {
+        margin-bottom: 30px;
+        font-size: 17px;
+        font-family: GalanoGrotesque-Medium, sans-serif;
+        @media (min-width: $breakpoint480) {
+            font-size: 20px;
+        }
+        @media (min-width: $breakpoint768) {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+    }
+
+    &-btn {
+        width: 140px;
+    }
+    &_description {
+        font-size: 14px;
+        font-family: GalanoGrotesque-Medium, sans-serif;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        @media (min-width: $breakpoint480) {
+            font-size: 15px;
+            margin-top: 0;
+        }
+    }
+    &_action {
+        @media (min-width: $breakpoint768) {
+            //display: flex;
+            //justify-content: space-between;
+        }
+
+    }
+    .name-label {
+        position: relative;
+        width: 100%;
+        //margin-bottom: 20px;
+
+    }
+    .input-text {
+        background-color: #fafafa;
+        font-size: 13px;
+        line-height: 16px;
+        border-radius: 25px;
+        padding: 10px 15px;
+        width: 100%;
+        color: #5E5E5E;
+        border: 1px solid #cdcbcb;
+        @media (min-width: $breakpoint480) {
+            padding: 15px 20px;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        &-upload {
+            position: relative;
+            height: 40px;
+            @media (min-width: $breakpoint480) {
+                height: 54px;
+            }
+            &.transparent-color {
+                color: transparent;
+            }
+            &::-webkit-file-upload-button {
+                display: none;
+                font-size: initial;
+            }
+            &::after {
+                position: absolute;
+                content: '';
+                background: url(../../images/download-img.png);
+                background-repeat: no-repeat;
+                width: 15px;
+                height: 15px;
+                right: 10px;
+                top: 12px;
+                @media (min-width: $breakpoint480) {
+                    right: 18px;
+                    top: 20px;
+                }
+            }
+        }
+    }
+    .test {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 13px;
+        padding: 13px 15px;
+        color: #a1a1a1;
+        pointer-events: none;
+        @media (min-width: $breakpoint480) {
+            padding: 19px 20px;
+            font-size: 16px;
+        }
+        &.transparent-color {
+            color: transparent;
+        }
+    }
+    #specialMessage {
+        height: 100px;
+        margin-bottom: 20px;
+        @media (min-width: $breakpoint768) {
+            margin-bottom: 0;
+        }
+    }
+    .checkbox__item {
+        padding-left: 20px;
+        @media (min-width: $breakpoint1025) {
+            padding-left: 30px;
+        }
+    }
+}

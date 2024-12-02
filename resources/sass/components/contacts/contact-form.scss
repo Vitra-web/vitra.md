@@ -1,0 +1,190 @@
+.contacts_block {
+    width: 100%;
+    border-radius: 25px;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border: 1px #f5f5f5 solid;
+    box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+    @media (min-width: $breakpoint1025) {
+        width: 900px;
+        margin-top: 100px;
+    }
+    @media (min-width: $containerWidth + px) {
+        width: 1200px;
+
+    }
+}
+.contacts_bg_block {
+    background-color: #F4F4F4;
+    padding: 20px;
+
+    @media (min-width: $breakpoint1025) {
+        padding: 20px 20px 20px 100px;
+    }
+
+}
+.contacts_country {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+.contacts_list {
+
+}
+
+.contacts_address_mail {
+    @media (min-width: 576px) {
+        min-height: 190px;
+    }
+}
+
+.contacts_bottom {
+    padding: 40px 40px 40px 0;
+}
+.contacts_item {
+    @media (max-width: $breakpoint768) {
+        margin-bottom: 30px;
+    }
+
+
+}
+.contacts_data {
+    padding-left: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    @media (min-width: $breakpoint1025) {
+        padding-left: 100px;
+    }
+}
+.contact_img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    margin-top: 3px;
+}
+.contact_text {
+    color: #454545;
+    font-size: 18px;
+    line-height: 25px;
+    @media (min-width: $breakpoint1025) {
+        font-size: 25px;
+        line-height: 32px;
+    }
+}
+.contact_see_google {
+    font-size: 20px;
+    padding-left: 20px;
+    color: #0a0a0a;
+}
+.contact_location_name {
+    font-size: 24px;
+    font-weight: bold;
+    @media (min-width: $breakpoint1025) {
+        font-size: 30px;
+    }
+}
+
+.gm-ui-hover-effect {
+    width: 40px !important;
+    height: 40px !important;
+
+    span {
+        margin: 8px !important;
+    }
+}
+
+.contact-form {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    &-title {
+        margin-bottom: 40px;
+        font-family: 'GalanoGrotesque-Medium', sans-serif;
+        font-size: 25px;
+    }
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &-description {
+        font-size: 24px;
+        font-family: GalanoGrotesque-SemiBold, sans-serif;
+        margin-bottom: 20px;
+        @media (min-width: $breakpoint480) {
+            font-size: 30px;
+            line-height: 35px;
+        }
+        @media (min-width: $breakpoint1025) {
+            font-size: 50px;
+            line-height: 60px;
+            margin-bottom: 30px;
+
+        }
+        @media (min-width: $containerWidth + px) {
+            padding-right: 30px;
+        }
+    }
+
+    &-inputs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    &__action {
+        position: relative;
+        width: 100%;
+        padding: 50px 50px 50px 50px;
+        justify-content: space-between;
+        gap: 15px;
+        border: 1px #f5f5f5 solid;
+        box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+        border-radius: 25px;
+
+
+        .contact-name-label {
+            position: relative;
+            @media (max-width: $breakpoint480) {
+                width: 100%;
+            }
+            .contact-input-text {
+                background-color: #fafafa;
+                font-size: 16px;
+                border-radius: 25px;
+                padding: 15px 0 15px 20px;
+                width: 280px;
+                //color: #a1a1a1;
+                color: #5E5E5E;
+                border: 1px solid #cdcbcb;
+                @media (max-width: $breakpoint480) {
+                    width: 100%;
+                }
+
+            }
+        }
+
+        .contact-message-label {
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        &-textarea{
+            width: 100%;
+            background-color: #fafafa;
+            font-size: 16px;
+            border-radius: 25px;
+            border: 1px solid #cdcbcb;
+            padding: 20px ;
+        }
+        &-btn {
+            //position: absolute;
+            //bottom: -24px;
+            //left: 36%;
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+    }
+}

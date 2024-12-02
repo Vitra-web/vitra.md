@@ -1,0 +1,208 @@
+.discussion-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 40px;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    border: 1px #f5f5f5 solid;
+    box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+    @media (min-width: $breakpoint1025) {
+        padding: 60px 45px;
+    }
+    &__title {
+        font-size: 20px;
+        font-family: GalanoGrotesque-SemiBold, sans-serif;
+        margin-bottom: 20px;
+
+        @media (min-width: $breakpoint480) {
+            font-size: 30px;
+        }
+        @media (min-width: $breakpoint1025) {
+            font-size: 40px;
+            margin-bottom: 30px;
+
+        }
+        @media (min-width: $containerWidth + px) {
+            padding-right: 30px;
+        }
+    }
+
+    &_description {
+        font-size: 18px;
+        font-family: GalanoGrotesque-SemiBold, sans-serif;
+        @media (min-width: $breakpoint480) {
+            font-size: 25px;
+        }
+    }
+
+    &_right {
+        @media (min-width: $containerWidth + px) {
+            padding-right: 50px;
+        }
+
+        .discussion_title_right {
+            margin-bottom: 30px;
+            font-size: 17px;
+            font-family: GalanoGrotesque-SemiBold, sans-serif;
+            @media (min-width: $breakpoint480) {
+                font-size: 20px;
+            }
+            @media (min-width: $breakpoint768) {
+                font-size: 20px;
+                margin-bottom: 40px;
+            }
+
+        }
+        .discussion_description {
+            font-size: 14px;
+            @media (min-width: $breakpoint480) {
+                font-size: 18px;
+            }
+            @media (min-width: $breakpoint768) {
+                font-size: 22px;
+            }
+        }
+    }
+
+    &_input-block {
+        margin-bottom: 30px;
+        @media (min-width: $breakpoint1025) {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+    }
+    .checkbox__item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        @media (max-width: $breakpoint480) {
+            gap: 5px;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+        @media (min-width: $breakpoint1025) {
+            margin-right: 30px;
+            margin-bottom: 0;
+        }
+        .checkbox__input {
+            display: none;
+            &:checked+.fake::before {
+                opacity: 1;
+            }
+        }
+        .fake {
+            height: 16px;
+            width: 16px;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            display: block;
+            margin-right: 15px;
+            position: relative;
+            @media (max-width: $breakpoint768) {
+                margin-right: 5px;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                height: 9px;
+                width: 9px;
+                background: #000;
+                top: 50%;
+                box-sizing: border-box;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: 0.3s all ease;
+            }
+        }
+    }
+    .checkbox_text {
+         width: 85%;
+        font-size: 12px;
+        @media (min-width: $breakpoint480) {
+            font-size: 14px;
+        }
+        @media (min-width: $breakpoint1025) {
+            width: 95%;
+            font-size: 16px;
+        }
+    }
+
+
+
+    &__action {
+        max-width: 860px;
+        padding: 50px 20px;
+        display: flex;
+
+        justify-content: space-between;
+        gap: 15px;
+        border: 1px solid #1f1f1f;
+        border-radius: 15px;
+        @media (min-width: $breakpoint480) {
+            padding: 50px;
+        }
+
+    }
+    &_button-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media (min-width: $breakpoint1025) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+    }
+}
+
+.discussion-name-label {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    @media (min-width: $breakpoint768) {
+        width: calc((100%/3) - 10px );
+        margin-bottom: 0;
+    }
+    @media (min-width: $breakpoint1025) {
+        width: calc((100%/3) - 20px );
+        margin-bottom: 0;
+    }
+    .discussion-input-text {
+        width: 100%;
+        color: #535252;
+        background-color: #fafafa;
+        font-size: 10px;
+        border-radius: 25px;
+        padding: 8px 0 8px 15px;
+        border: 1px solid #1f1f1f;
+        @media (min-width: $breakpoint480) {
+            padding: 10px 0 10px 20px;
+            font-size: 16px;
+        }
+    }
+}
+
+.discussion-btn{
+    @media (min-width: $breakpoint480) {
+        padding: 15px 50px;
+
+    }
+}
+
+
+.text_error {
+    display: none;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #f63c3c;
+}
+

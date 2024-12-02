@@ -1,0 +1,153 @@
+.account-block {
+    &_title {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        @media (min-width: $breakpoint768) {
+            margin-bottom: 40px;
+            font-size: 30px;
+        }
+    }
+    &_nav {
+        display: grid;
+        margin-bottom: 30px;
+        position: relative;
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+        &::before{
+            content: "";
+            width: 100%;
+            height: 5px;
+            background-color: #D9D9D9;
+            position: absolute;
+            bottom: -5px;
+            border-radius: 8px;
+        }
+    }
+    &_nav_item {
+        padding: 10px;
+        color: #5C5C5C;
+        font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        font-size: 16px;
+        //border-bottom: 5px #D9D9D9 solid;
+        cursor: pointer;
+        white-space: nowrap;
+        user-select: none;
+        @media (max-width: 650px) {
+            padding: 10px 2px;
+            font-size: 14px;
+        }
+        &.active {
+            position: relative;
+            &::before{
+                content: "";
+                width: 100%;
+                height: 5px;
+                background-color: #000;
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                border-radius: 8px;
+            }
+        }
+        @media (max-width: 650px) {
+            white-space: unset;
+        }
+    }
+    &_title {
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        padding-bottom: 5px;
+        @media (min-width: $breakpoint768) {
+            margin-bottom: 30px;
+            font-size: 25px;
+        }
+    }
+    &_edit {
+        cursor: pointer;
+    }
+    &_edit_img {
+        width: 25px;
+        height: 25px;
+        margin-right: 15px;
+    }
+    &_edit_text {
+        font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        font-size: 16px;
+    }
+    &_label {
+        margin-bottom: 13px;
+        font-family: "GalanoGrotesque-Light", sans-serif;
+    }
+    &_input {
+        border-radius: 30px;
+        border: 1px #7f7e7e solid;
+        padding: 8px 15px;
+        font-size: 14px;
+        @media (min-width: $breakpoint768) {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    }
+    &_value {
+        font-size: 18px;
+        margin-bottom: 16px;
+        @media (min-width: $breakpoint768) {
+            font-size: 20px;
+        }
+    }
+    .edit_block {
+        display: none;
+        user-select: none;
+        &.active {
+            display: flex;
+        }
+
+    }
+    .save_block {
+        display: none;
+        &.active {
+            display: flex;
+        }
+    }
+    .edit_block_data {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    .edit_block_form {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    .personal_information_edit_block {
+        padding-bottom: 20px;
+    }
+    &_deletecont {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 24px;
+        font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        @media (min-width: $breakpoint768) {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 30px;
+        }
+    }
+    &_pass {
+     margin-left: 10px;
+    }
+    form {
+        label,input{
+            width: 100%;
+        }
+    }
+}
+.off {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+}

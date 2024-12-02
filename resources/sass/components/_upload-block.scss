@@ -1,0 +1,192 @@
+.upload-block {
+    background: #f3f3f3;
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @media (max-width: 483px) {
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-direction: column;
+        }
+    }
+    &__items {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+        @media (max-width: 840px) {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+    &__email {
+        padding: 0 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &::after {
+            position: absolute;
+            content: '';
+            width: 2px;
+            height: 70px;
+            background-color: #fff;
+            left: 0;
+            @media (max-width: 840px) {
+                display: none;
+            }
+        }
+        a {
+            color: #000;
+        }
+        img {
+            width: 28px;
+            height: 20px;
+        }
+    }
+    &__tell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 0 16px;
+        &::after {
+            position: absolute;
+            content: '';
+            width: 2px;
+            height: 70px;
+            background-color: #fff;
+            left: 0;
+            @media (max-width: 840px) {
+                display: none;
+            }
+        }
+        a {
+            color: #000;
+        }
+    }
+    &__btn {
+        @media (max-width: 840px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.listBtnDropdown {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    position: relative;
+    max-height: 34px;
+    background: transparent;
+    &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 70px;
+        background-color: #fff;
+        left: 0;
+        top: -18px;
+        @media (max-width: 840px) {
+            display: none;
+        }
+    }
+    svg {
+        width: 28px;
+        height: 20px;
+    }
+    .btnDropdown {
+        flex: 1 1 auto;
+        flex-wrap: wrap;
+        background: transparent;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .btnNav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background: transparent;
+            justify-content: space-between;
+            gap: 16px;
+            height: 34px;
+            width: 100%;
+            padding: 0 16px;
+            border: none;
+            cursor: pointer;
+            @media (max-width: $breakpoint1025) {
+                gap: 0;
+                padding: 0;
+            }
+            p {
+                font-family: 'GalanoGrotesque-Medium', sans-serif;
+                span {
+                    font-family: 'GalanoGrotesque-Light', sans-serif;
+                    color: #454545;
+                }
+            }
+            .arrow-upload-block {
+                rotate: 180deg;
+                transition: all 340ms;
+            }
+            &:hover .arrow-upload-block {
+                rotate: 0deg;
+            }
+        }
+        .dropdown {
+            display: grid;
+            z-index: 10;
+            // position: absolute; // Position the dropdown absolutely
+            // top: calc(100% + 10px); // Position the dropdown below the button
+            width: calc(100% - 8px);
+            grid-template-rows: 0fr;
+            background: #f3f3f3;
+            // border-left: 1px solid #e4e4e4;
+            // border-right: 1px solid #e4e4e4;
+            border-radius: 16px 16px 0 0;
+            opacity: 0;
+            transition: all 340ms;
+            .dropdown-content {
+                overflow: hidden;
+                opacity: 0;
+                transition: all 340ms;
+                &__a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 15px;
+                    color: #000;
+                }
+            }
+        }
+        &:hover .dropdown {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            .dropdown-content {
+                opacity: 1;
+                transition: all 1s;
+            }
+        }
+    }
+    .dropdown-content ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .dropdown-content li {
+        display: flex;
+
+        align-items: center;
+
+        padding: 6px 20px;
+        font-size: 13px;
+        border-bottom: 1px solid #d7d7d7;
+    }
+}

@@ -1,0 +1,54 @@
+//@include font-face("GalanoGrotesque-ExtraLight", "../fonts/GalanoGrotesque-ExtraLight.woff2", 200, normal);
+//@include font-face("GalanoGrotesque-Light", "../fonts/GalanoGrotesque-Light.woff2", 300, normal);
+//@include font-face("GalanoGrotesque", "../fonts/GalanoGrotesque-Regular.woff2", 400, normal);
+//@include font-face("GalanoGrotesque-Medium", "../fonts/GalanoGrotesque-Medium.woff2", 500, normal);
+//@include font-face("GalanoGrotesque-Semibold", "../fonts/GalanoGrotesque-SemiBold.woff2", 600, normal);
+//@include font-face("GalanoGrotesque-Bold", "../fonts/GalanoGrotesque-Bold.woff2", 700, normal);
+//@include font-face("GalanoGrotesque-ExtraBold", "../fonts/GalanoGrotesque-ExtraBold.woff2", 800, normal);
+//@include font-face("GalanoGrotesque-Black", "../fonts/GalanoGrotesque-Black.woff2", 900, normal);
+
+
+@font-face {
+    font-family: 'GalanoGrotesque-ExtraLight';
+    font-style:  normal;
+    font-weight: 200;
+    src: url("../fonts/GalanoGrotesque-ExtraLight.woff2") format("woff2");
+}
+@font-face {
+    font-family: 'GalanoGrotesque-Light';
+    font-style:  normal;
+    font-weight:300;
+    src: url("../fonts/GalanoGrotesque-Light.woff2") format("woff2");
+}
+@font-face {
+    font-family: 'GalanoGrotesque-Regular';
+    font-style:  normal;
+    font-weight: 400;
+    src: url("../fonts/GalanoGrotesque-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: 'GalanoGrotesque';
+    font-style:  normal;
+    font-weight: 400;
+    src: url("../fonts/GalanoGrotesque-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: 'GalanoGrotesque-Medium';
+    font-style:  normal;
+    font-weight: 500;
+    src: url("../fonts/GalanoGrotesque-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'GalanoGrotesque-Semibold';
+    font-style:  normal;
+    font-weight: 600;
+    src: url("../fonts/GalanoGrotesque-Semibold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'GalanoGrotesque-Bold';
+    font-style:  normal;
+    font-weight: 700;
+    src: url("../fonts/GalanoGrotesque-Bold.woff2") format("woff2");
+}

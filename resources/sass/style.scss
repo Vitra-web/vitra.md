@@ -1,0 +1,83 @@
+// Global SCSS-files imports
+@import './vars';
+@import './mixins/mini';
+@import './reset';
+@import './global';
+@import './fonts';
+// Sections or Pages SCSS-files imports
+@import './header';
+@import 'pages/index/main-section';
+@import 'pages/index/about-section';
+@import 'pages/index/mission-section';
+@import 'pages/index/retail-section';
+@import 'pages/index/logistics-section';
+@import 'pages/index/horeca-section';
+@import 'pages/index/life-section';
+@import 'pages/index/industries-swiper';
+@import 'pages/index/sponsor-section';
+@import 'pages/index/discussion-section';
+@import 'pages/index/news-section';
+@import 'pages/index/offer-section';
+@import 'pages/index/banner-section';
+@import './components/industry-block';
+@import 'pages/industri/main-industry-section';
+@import 'pages/industri/main-industry-inner';
+@import 'pages/industri/industry-info-slider';
+
+@import './more-ideas-section';
+
+@import 'pages/category/category-items-section';
+@import 'pages/subcategory/products-info';
+@import 'pages/subcategory/products-cards';
+@import 'pages/subcategory/products-slider';
+@import 'pages/subcategory/specifications';
+
+@import 'pages/product/product-main-section';
+@import 'pages/product/product-key-features';
+@import 'pages/product/product-more';
+@import 'pages/product/product-recent-slider';
+@import 'pages/product/product-bottom-buttons';
+@import 'pages/news/main-news-section';
+@import 'pages/news/news-blocks';
+@import 'pages/news/more-news';
+@import 'pages/portfolio/index';
+@import 'pages/resolve/index';
+
+@import 'pages/careers/careers-descr';
+@import 'pages/careers/careers-join';
+@import 'pages/careers/careers-benefits';
+@import 'pages/careers/careers-vacancy';
+@import 'pages/careers/careers-form';
+@import 'pages/careers/full-form';
+@import 'pages/careers/special-form';
+@import 'pages/contacts/contact-form';
+@import 'pages/basket/basket-order';
+@import 'pages/basket/basket-viewmore';
+@import 'pages/payment/payment-form';
+@import 'pages/payment/success-error';
+@import "pages/about/about-descr";
+@import "pages/about/about-curiosity";
+@import "pages/about/about-mission";
+@import "pages/about/about-video";
+@import "pages/about/about-form";
+@import 'pages/auth/login-register';
+@import 'pages/auth/choose-type';
+@import 'pages/cabinet/common';
+@import 'pages/cabinet/welcome-page';
+@import 'pages/cabinet/account-page';
+@import 'pages/solution/index';
+
+
+@import './components/upload-block';
+@import 'components/modals/consultation-modal';
+@import 'components/modals/download-pdf-modal';
+@import 'components/modals/solution-modal';
+@import 'components/point';
+@import './components/feedback-block';
+@import './components/chekbox';
+@import './footer';
+@import './home';
+
+// @import './footer';
+// Libs
+// @import './libs/swiper';

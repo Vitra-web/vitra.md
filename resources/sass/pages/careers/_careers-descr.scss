@@ -1,0 +1,78 @@
+.career-descr {
+    margin-top: 40px;
+}
+
+.career-body {
+
+
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width: 1015px) {
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__description-block {
+        @media(min-width: $breakpoint768) {
+          padding-right: 40px;
+        }
+    }
+    &__title {
+        font-family: 'GalanoGrotesque-Semibold', sans-serif;
+        font-size: 25px;
+        color: #000;
+        margin-bottom: 26px;
+        @media(min-width: $breakpoint768) {
+            font-size: 35px;
+        }
+        @media(min-width: $breakpoint1025) {
+            margin-bottom: 40px;
+            font-size: 50px;
+        }
+    }
+    &__description {
+        font-size: 17px;
+        ul li {
+            list-style: inherit;
+            vertical-align: middle;
+
+        }
+        ul {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        @media(min-width: $breakpoint768) {
+            font-size: 20px;
+            line-height: 27px;
+        }
+    }
+
+    &__text {
+        font-size: 17px;
+        color: #454545;
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        @media(min-width: $breakpoint768) {
+            font-size: 20px;
+        }
+    }
+    &__img {
+        @media(max-width: 1015px) {
+            margin-top: 30px;
+        }
+        img {
+            width: 100%;
+            @media(min-width: $breakpoint768) {
+                height: 600px;
+                object-fit: cover;
+            }
+
+
+        }
+    }
+}

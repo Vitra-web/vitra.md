@@ -1,0 +1,197 @@
+.product-card__swiper-slide {
+    width: 310px;
+}
+
+.product-cards {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    &__title {
+        margin-bottom: 20px;
+        font-family: 'GalanoGrotesque-Light', sans-serif;
+        font-size: 25px;
+        color: #000;
+        @media (min-width: $breakpoint480) {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        &-span {
+            font-family: 'GalanoGrotesque-Bold', sans-serif;
+        }
+    }
+    &__body {
+        display: flex;
+        //justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        @media (max-width: $breakpoint1025) {
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+        }
+    }
+
+}
+
+.product-card {
+    //width: calc(25% - 45px);
+    //@media (max-width: $breakpoint1025) {
+    //    width: 220px;
+    //}
+    margin-bottom: 20px;
+    border-radius: 10px;
+    &:hover {
+        box-shadow: #00000040 0 10px 40px;
+    }
+
+    &__img {
+        width: 100%;
+       border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+
+    }
+
+    &__title {
+        margin-top: 20px;
+        font-family: 'GalanoGrotesque-Semibold', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    &__descr {
+        margin-top: 10px;
+        //width: 180px;
+        height: 50px;
+        overflow: hidden;
+        font-size: 14px;
+    }
+    &__code {
+        margin-top: 10px;
+        &-title {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        &-nr {
+            font-family: 'GalanoGrotesque-Semibold', sans-serif;
+            font-size: 14px;
+        }
+    }
+    &__price {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-body {
+            display: flex;
+        }
+        &-nr {
+            font-family: 'GalanoGrotesque-Semibold', sans-serif;
+            font-size: 30px;
+        }
+        &-currency {
+            padding-left: 5px;
+            font-family: 'GalanoGrotesque-Medium', sans-serif;
+            font-size: 14px;
+            margin-top:-10px;
+            font-weight: bold;
+        }
+        &-cart {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            transition: background .3s ease-in-out;
+            &:hover {
+                background: #d0cfcf;
+                //svg {
+                //    path {
+                //        transition: stroke .3s ease-in-out;
+                //        stroke: #fff
+                //    }
+                //}
+            }
+            //svg {
+            //    width: 20px;
+            //    height: 20px;
+            //    transition: stroke .3s ease-in-out;
+            //}
+        }
+
+    }
+    &__offer{
+        margin-top: 20px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        transition: .3s ease-in-out;
+        cursor: pointer;
+
+    }
+    &__offer-btn {
+        background: #f0f0f0;
+        color: #000;
+        border-radius: 20px;
+        padding: 5px 15px;
+        &:hover {
+            background: #000;
+            color: #fff;
+        }
+    }
+}
+
+.productCardsSwiper {
+    .swiper-button-next {
+        top:45%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, .25) 0 10px 20px 0;
+        &::after {
+            color: #000;
+            font-size: 30px;
+        }
+    }
+    .swiper-button-prev {
+        top:45%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, .25) 0 10px 20px 0;
+        &::after {
+            color: #000;
+            font-size: 30px;
+        }
+    }
+}
+
+.singleProductSwiperMore {
+    .swiper-button-next {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, .25) 0 10px 20px 0;
+        &::after {
+            color: #000;
+            font-size: 30px;
+        }
+    }
+    .swiper-button-prev {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, .25) 0 10px 20px 0;
+        &::after {
+            color: #000;
+            font-size: 30px;
+        }
+    }
+}
+

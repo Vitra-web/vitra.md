@@ -1,0 +1,22 @@
+.product-more__swiper{
+    //margin-left: -30px;
+    //margin-right: -30px;
+
+    //.swiper-wrapper {
+    //    padding: 30px;
+    //
+    //}
+    .swiper-slide {
+        overflow: visible;
+    }
+    &-slide{
+        width: 100%;
+        .product-card{
+            width: 100%;
+        }
+    }
+
+
+
+
+}

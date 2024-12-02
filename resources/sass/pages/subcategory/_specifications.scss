@@ -1,0 +1,126 @@
+.subcategory_specification {
+    width: 550px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 20px 30px;
+    border: 1px solid #f3f3f3;
+    @media (max-width: $breakpoint768) {
+        width: 100%;
+    }
+    }
+
+.specification_title {
+ margin-bottom:20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.specification_name_list {
+
+}
+.specification_value_list {
+
+    font-weight: bold;
+}
+.specification_item {
+    margin-bottom: 15px;
+}
+
+
+
+.type_image {
+    width: 100%;
+    @media (min-width: $breakpoint768) {
+        max-width: 770px;
+        max-height: 700px;
+        object-fit: cover;
+    }
+}
+.type_text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 40px 20px 40px;
+
+}
+.type_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    @media (min-width: $breakpoint480) {
+        font-size: 30px;
+    }
+    @media (min-width: $breakpoint768) {
+        font-size: 34px;
+    }
+}
+.type_description {
+    position: relative;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 26px;
+    //height: 75px;
+    overflow: hidden;
+    font-family: 'GalanoGrotesque', sans-serif;
+    &.hidden {
+        //max-height: 100px;
+        overflow: hidden;
+    }
+    @media (min-width: $breakpoint480) {
+        font-size: 18px;
+    }
+}
+
+.see_more_block {
+    display: none;
+    padding: 50px;
+    margin-top: 40px;
+    background-color: rgba(0, 0, 0, .02);
+}
+
+
+.type_description_title {
+    font-size: 14px;
+    line-height: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.type_item {
+    font-family: 'GalanoGrotesque-Medium', sans-serif;
+    font-size: 18px;
+    line-height: 26px;
+    &>span:first-child{
+        font-size: 16px;
+    }
+}
+.type_show-more {
+    line-height: 25px;
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+    @media (min-width: $breakpoint480) {
+        font-size: 20px;
+        line-height: 28px;
+    }
+}
+
+.type_block {
+    width: 100%;
+    margin-bottom: 40px;
+    break-inside: avoid;
+}
+
+@media (max-width: 768px) {
+    .title_image_container {
+        flex-direction: column-reverse;
+    }
+    .type_block {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .type_list {
+        column-count: 2;
+    }
+
+}

@@ -1,0 +1,63 @@
+.category-items {
+    margin-top: 35px;
+    &__cards {
+        width: 100%;
+        margin-bottom: 30px;
+        // display: flex;
+        // flex-wrap: wrap;
+        // gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        @media (max-width: 1350px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        @media (max-width: 950px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        @media (max-width: 500px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        // @media (max-width: $breakpoint1025) {
+        //     justify-content: center;
+        //     align-items: center;
+        // }
+        // @media (max-width: $breakpoint768) {
+        //     justify-content: space-evenly;
+        //     gap: 15px;
+        // }
+    }
+    &__card {
+        width: 100%;
+        height: auto;
+        transition: .3s ease-in-out;
+        @media (max-width: $breakpoint768) {
+            width:100%;
+        }
+        &:hover {
+            background-color: #f3f3f3;
+            box-shadow: rgba(0, 0, 0, .25) 0 10px 40px;
+        }
+        &-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 15px;
+        }
+    }
+    &__img {
+        width: 100%;
+    }
+    &__title {
+        font-family: 'GalanoGrotesque', sans-serif;
+        font-size: 18px;
+        color: #000;
+        max-width: 200px;
+    }
+}
+
+.subcategoryFilerSwiper {
+    margin-bottom: 25px;
+}

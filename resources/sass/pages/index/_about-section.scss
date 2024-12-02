@@ -1,0 +1,555 @@
+.about_block {
+    @media (min-width: $breakpoint1025) {
+        padding-top: 40px;
+    }
+    &_title {
+        position: absolute;
+        top: 20px;
+        left: 10px;
+        z-index: 50;
+        font-size: 24px;
+        //padding-left: 10px;
+        font-family: "GalanoGrotesque-SemiBold", sans-serif;
+        color: #fff;
+        @media (min-width: $breakpoint768) {
+            top: 40px;
+            font-size: 50px;
+            //padding-left: 120px;
+        }
+        @media (min-width: $breakpoint1025) {
+            //top: 140px;
+            font-size: 70px;
+
+        }
+    }
+}
+
+
+
+
+.aboutSwiper {
+    position: relative;
+    width: 100%;
+    height: 96vh;
+    @media(max-width: 1500px) {
+        height: 100%;
+    }
+
+    .slider_img {
+        padding: 0;
+    }
+
+    //@media (min-width: $breakpoint480) {
+    //    height: calc(100vh - 40px) ;
+    //}
+    .swiper-slide {
+        object-fit: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: auto;
+        position: relative;
+
+        padding-bottom: 30px;
+        @media (min-width: $breakpoint480) {
+            padding-bottom: 0;
+        }
+
+        &::before {
+            background-color: rgba(16, 15, 15, 0.68);
+            opacity: 80%;
+            content: '';
+            top: 0;
+            left: 0;
+            display: block;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            //z-index: -10;
+        }
+    }
+    .swiper-btn {
+        width: 200px;
+        height: 45px;
+        @media(min-width: $breakpoint480) {
+            width: 220px;
+        }
+        @media(min-width: $breakpoint1025) {
+            width: 260px;
+            height: 50px;
+        }
+    }
+    .swiper-button-next {
+        width: 35px;
+        height: 35px;
+        top: 90%;
+        right: 20px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: #00000040 0 10px 20px;
+        &:after {
+            color: #000;
+            font-size: 18px;
+        }
+        @media (min-width: $breakpoint768) {
+            width: 50px;
+            height: 50px;
+            right: 50px;
+            &:after {
+                font-size: 30px;
+            }
+        }
+    }
+    .swiper-button-prev {
+        width: 35px;
+        height: 35px;
+        top: 90%;
+        left: 20px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: #00000040 0 10px 20px;
+        &:after {
+            color: #000;
+            font-size: 18px;
+        }
+        @media (min-width: $breakpoint768) {
+            width: 50px;
+            height: 50px;
+            left: 50px;
+            &:after {
+                font-size: 30px;
+            }
+        }
+    }
+
+
+    .benefit_main_container {
+        position: relative;
+        z-index: 11;
+        color: #fff;
+        //padding-top: 130px;
+        //padding-left: 10px;
+        padding: 25vw 10px;
+        //@media (max-width: $breakpoint480) {
+        //    padding-top: 100px;
+        //    padding-bottom: 90px;
+        //}
+        @media (max-width: $breakpoint480) {
+            padding-bottom: 0;
+        }
+
+        @media (min-width: $breakpoint768) {
+            //padding-left: 70px;
+            //padding-top: 250px;
+            padding: calc(10vw + 12vh) 10px;
+        }
+        @media (min-width: $containerWidth + px) {
+            padding-left: 0;
+        }
+
+        .cards__counter {
+            display: flex;
+            align-items: flex-end;
+
+            margin-bottom: 20px;
+
+        }
+
+        .counter {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 24px;
+            font-family: "GalanoGrotesque-SemiBold", sans-serif;
+            @media (min-width: $breakpoint480) {
+                font-size: 32px;
+            }
+            @media (min-width: $breakpoint768) {
+                font-size: 40px;
+            }
+
+            &__number {
+
+            }
+
+
+            &__plus {
+
+            }
+        }
+
+        .cards__counter-text {
+            font-size: 24px;
+            @media (min-width: $breakpoint480) {
+                font-size: 32px;
+            }
+            @media (min-width: $breakpoint768) {
+                font-size: 40px;
+            }
+
+        }
+        .cards__counter-description {
+            width: 100%;
+            margin-bottom: 25px;
+            font-size: 18px;
+            font-family: "GalanoGrotesque-Light", sans-serif;
+            line-height: 20px;
+            @media (min-width: $breakpoint480) {
+                font-size: 24px;
+                line-height: 30px;
+                width: 80%;
+                margin-bottom: 40px;
+            }
+            @media (min-width: $breakpoint768) {
+                width: 70%;
+            }
+
+        }
+    }
+
+
+
+    .swiper-buttons__bottom {
+        position: relative;
+        padding-right: 0;
+        padding-left: 10px;
+        @media (min-width: $breakpoint768) {
+            padding-left: 70px;
+        }
+        @media (min-width: $containerWidth + px) {
+            padding-left: 0;
+        }
+        .append-buttons {
+            max-width: $containerWidth + px;
+            position: absolute;
+            bottom: 70px;
+            z-index: 2;
+            width: 100%;
+            @media (max-width: 768px) {
+                display: none;
+                bottom: 50px;
+            }
+            &__body {
+                display: flex;
+                justify-content: space-between;
+                //padding: 0 22px;
+                max-width: calc(100% - 200px);
+                //@media (max-width: $breakpoint1025) {
+                //
+                //    justify-content: space-between;
+                //    padding: 0 15px;
+                //}
+                //@media (max-width: $breakpoint768) {
+                //    flex-wrap: wrap;
+                //    gap: 10px 0;
+                //}
+                //@media (max-width: $breakpoint480) {
+                //    display: none;
+                //}
+            }
+            &-about__text {
+                display: flex;
+                flex-direction: column;
+                color: #c6c2c2;
+                // width: calc((100%/6) - 20px);
+                width: 100%;
+                padding-left: 10px;
+                flex: 1 1 0px;
+
+                @media (max-width: $breakpoint1025) {
+                    display: none;
+                }
+
+                &.active {
+                    display: flex;
+                    color: #fff;
+                    transform: scale(1.1);
+                }
+                &_first {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                    @media (max-width: $breakpoint1025) {
+                        font-size: 16px;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                &_second {
+                    margin-bottom: 20px;
+                    font-family: 'GalanoGrotesque-Bold', sans-serif;
+                    font-size: 24px;
+                    max-width: 190px;
+                    @media (max-width: $breakpoint1025) {
+                        font-size: 20px;
+
+                    }
+                }
+
+
+                .cards__counter {
+                    padding-left: 10px;
+
+                }
+                .counter {
+                    display: flex;
+                    align-items: flex-start;
+                    margin-bottom: 20px;
+                    font-family: 'GalanoGrotesque-Bold', sans-serif;
+                    font-size: 30px;
+                    @media (max-width: 900px) {
+                        margin-bottom: 2px;
+                    }
+                    &__number {
+
+                    }
+                    &__text {
+
+                    }
+                    &__plus {
+
+                    }
+                }
+                .cards__counter-text {
+                    font-family: 'GalanoGrotesque-Medium', sans-serif;
+                    font-size: 20px;
+                }
+
+
+            }
+        }
+    }
+
+
+    .swipper-scrollbar__body {
+        position: relative;
+        //display: flex;
+
+        .swiper-scrollbar {
+            bottom: 50px;
+            width: 90%;
+            padding: 0;
+            left: 4%;
+
+            background: #000;
+
+            @media (min-width: $breakpoint768) {
+                width: calc(100% - 200px);
+                //left: 45%;
+                left: 70px;
+                bottom: 15px;
+
+            }
+            @media (max-width: $breakpoint768) {
+                bottom: 20px;
+            }
+
+            @media (min-width: $containerWidth + px) {
+                left: 44%;
+                transform: translateX(-50%);
+            }
+            //@media (max-width: $breakpoint1025) {
+            //    display: none;
+            //}
+
+            &-drag {
+                background: #fff;
+            }
+        }
+
+
+
+        &-arrows {
+            position: absolute;
+            right: 130px;
+            bottom: 90px;
+            @media (max-width: $breakpoint480) {
+                display: none;
+            }
+            .about-swiper__next {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                //background: #fff;
+                box-shadow: #00000040 0 10px 20px;
+                border: 1px #fff solid;
+                //border-radius: 0;
+                background: $buttonBackground;
+                //box-shadow: none;
+                right: -100px;
+                &:hover {
+                    background:  $buttonBackgroundHover;
+                }
+
+                &::after {
+                    color: #fff;
+                    font-size: 20px;
+
+                }
+                //&:hover::after {
+                //    color:  #000;
+                //}
+            }
+            .about-swiper__prev {
+                @media (max-width: $breakpoint480) {
+                    left: -10px;
+                }
+                @media (max-width: $breakpoint768) {
+                    left: -5px;
+                }
+                &:hover {
+                    background:  $buttonBackgroundHover;
+                }
+                &::after {
+                    color: #fff;
+                    font-size: 20px;
+                }
+                //&:hover::after {
+                //    color:  #000;
+                //}
+                //border-radius: 0;
+                background: $buttonBackground;
+                border: 1px #fff solid;
+                //box-shadow: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                //background: #fff;
+                box-shadow: #00000040 0 10px 20px;
+                left: -30px;
+            }
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+//.about_description {
+//    font-size: 20px;
+//    line-height: 25px;
+//    //padding-right: 45px;
+//    //height: 275px;
+//    //overflow: hidden;
+//    p {
+//        line-height: 25px;
+//    }
+//
+//}
+//
+
+
+//.category-counter__cards-body{
+//    margin-top: 30px;
+//    padding-left: 30px;
+//
+//    @media (min-width: $breakpoint768){
+//        padding-left: 100px;
+//        padding-top: 0;
+//    }
+//    .category-counter__cards {
+//        position: relative;
+//        display: flex;
+//        align-items: flex-start;
+//        padding-bottom: 20px;
+//
+//        @media (min-width: $breakpoint768) {
+//            padding-bottom: 40px;
+//        }
+//
+//        &:not(:last-child)::after {
+//            content: '';
+//            position: absolute;
+//            height: 2px;
+//            width: 100%;
+//            background: #F25D23;
+//            bottom: 7px;
+//
+//            @media (min-width: $breakpoint768) {
+//                bottom: 14px;
+//            }
+//        }
+//
+//        &-img {
+//            display: flex;
+//            justify-content: center;
+//            align-items: center;
+//
+//            img {
+//                width: 50px;
+//
+//            }
+//        }
+//        .cards__counter {
+//            //padding-left: 15px;
+//            display: flex;
+//            flex-direction: column;
+//            align-items: center;
+//            justify-content: center;
+//            width: 100%;
+//            color: #454545;
+//
+//            &:hover * {
+//                color: #F25D23;
+//            }
+//            .counter {
+//                display: flex;
+//                align-items: flex-end;
+//                margin-bottom: 3px;
+//                &__number {
+//                    font-family: 'GalanoGrotesque-Bold', sans-serif;
+//                    font-size: 25px;
+//                    //font-weight: 700;
+//                    //padding-right: 10px;
+//                    margin-bottom: 5px;
+//                    @media (min-width: $breakpoint768) {
+//                        font-size: 35px;
+//                    }
+//
+//                }
+//                &__text {
+//                    font-family: 'GalanoGrotesque', sans-serif;
+//                    //display: flex;
+//                    //align-items: flex-end;
+//                    font-size: 14px;
+//                    @media (min-width: $breakpoint768) {
+//                        font-size: 18px;
+//                    }
+//                    &-center {
+//                        font-size: 36px;
+//
+//                        align-items: center;
+//                    }
+//                }
+//                &__plus {
+//                    font-size: 20px;
+//                }
+//                @media (min-width: $breakpoint768) {
+//                    font-size: 30px;
+//                }
+//            }
+//            &-text {
+//                font-family: 'GalanoGrotesque-SemiBold', sans-serif;
+//                font-size: 14px;
+//                @media (min-width: $breakpoint768) {
+//                    font-size: 18px;
+//                }
+//
+//            }
+//        }
+//    }
+//}
+//
+//
+//
+//.about_slider_img {
+//    width: 100%;
+//    height: 100%;
+//
+//}

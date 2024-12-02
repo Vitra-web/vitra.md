@@ -1,0 +1,136 @@
+
+.about-descr {
+
+}
+
+.about-descr__title {
+    font-family: 'GalanoGrotesque-SemiBold', sans-serif;
+    font-size: 30px;
+    color: #000;
+    margin-bottom: 20px;
+    @media (min-width: $breakpoint1025) {
+        font-size: 70px;
+        margin-bottom: 80px;
+    }
+}
+
+.about-descr__text {
+    font-size: 16px;
+
+    line-height: 17px;
+    @media (min-width: $breakpoint1025) {
+            font-size: 20px;
+            line-height: 26px;
+        p {
+            line-height: 26px;
+        }
+
+    }
+}
+
+.about-descr__text:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.about-descr__text-span {
+    font-family: 'GalanoGrotesque-SemiBold', sans-serif;
+}
+
+.about-descr__text-outside {
+    width: 1030px;
+    margin: 50px auto;
+    line-height: 17px;
+}
+
+@media (max-width: 1190px) {
+    .about-descr__text-outside {
+        width: 100%;
+    }
+}
+
+.about-descr__body {
+
+
+    @media (min-width: $breakpoint1025) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+//@media (max-width: 1190px) {
+//    .about-descr__body {
+//        flex-direction: column-reverse;
+//    }
+//}
+
+.about-descr__body-left {
+    width: 100%;
+    margin-bottom: 30px;
+    iframe {
+        @media (max-width: $containerWidth + px) {
+            width: 100%;
+            height: 600px;
+        }
+        @media (max-width: $breakpoint1025) {
+            //width: 650px;
+            height: 500px;
+        }
+        @media (max-width: $breakpoint768) {
+            //width: 600px;
+            height: 400px;
+        }
+        @media (max-width: $breakpoint480) {
+            //width: 100%;
+            height: 300px;
+        }
+    }
+    @media (min-width: $breakpoint1025) {
+        width: 55%;
+        padding-top: 120px;
+        margin-bottom: 0;
+    }
+    //height: 600px;
+}
+
+.about-descr__body-right {
+    width: 100%;
+    margin-bottom: 30px;
+    //& img {
+    //    display: block;
+    //    margin: 0 auto;
+    //}
+    @media (min-width: $breakpoint1025) {
+        width: 45%;
+        padding-left: 30px;
+    }
+}
+
+.img-logo {
+    margin-bottom: 20px;
+    width: 100%;
+    @media (min-width: $breakpoint480) {
+        width: 300px;
+    }
+    @media (min-width: $breakpoint768) {
+        width: 350px;
+    }
+    @media (min-width: $breakpoint1025) {
+        width: 450px;
+    }
+    @media (min-width: $containerWidth + px) {
+        width: 520px;
+    }
+}
+//@media (max-width: 1190px) {
+//    .about-descr__body-right {
+//
+//    }
+//    .about-descr__body-right img {
+//        display: block;
+//        margin: 0 auto;
+//    }
+//    .about-descr__title {
+//        text-align: center;
+//    }
+//}
+

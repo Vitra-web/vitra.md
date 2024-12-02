@@ -1,0 +1,42 @@
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 15px;
+    &__item {
+        position: relative;
+        &:not(:last-child) {
+            margin-right: 20px;
+            &::after {
+                content: ">";
+                position: absolute;
+                font-family: 'GalanoGrotesque-Light', sans-serif;
+                color: #000;
+                right: -13px;
+                font-size: 14px;
+                top: 3px;
+            }
+        }
+    }
+    &__link {
+        font-family: 'GalanoGrotesque-Medium', sans-serif;
+        color: #000;
+        font-size: 14px;
+        line-height: 150%;
+        @media (min-width: $breakpoint480) {
+            font-size: 16px;
+        }
+        &.active {
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+            &:hover {
+                border-bottom-color: #000;
+                font-weight: bold;
+            }
+        }
+        &:not([href]) {
+            font-family: 'GalanoGrotesque-Light', sans-serif;
+            color: inherit;
+        }
+    }
+}

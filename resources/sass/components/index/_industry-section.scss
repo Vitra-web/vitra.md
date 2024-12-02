@@ -1,0 +1,79 @@
+.industriesSwiper {
+    .swiper-slide {
+        //max-width: 290px;
+        //height: 330px;
+        max-width: $industrySliderWidth;
+        height: 250px;
+        @media (max-width: $breakpoint480) {
+            max-width: 190px;
+
+        }
+        &__img {
+            //background-size: 290px 290px;
+            background-size: $industrySliderWidth 230px;
+            background-repeat: no-repeat;
+            object-fit: cover;
+            @media (max-width: $breakpoint480) {
+                background-size: 190px 220px;
+            }
+        }
+
+        &__text {
+            opacity: 0.8;
+            margin-top: 140px;
+            //margin-top: 200px;
+            text-align: center;
+            font-size: 16px;
+            color: #000;
+            background-color: #dddbd9;
+            padding: 20px 0;
+            @media (max-width: $breakpoint480) {
+                font-size: 12px;
+            }
+        }
+        &__span {
+            font-family: 'GalanoGrotesque-Bold', sans-serif;
+        }
+    }
+    .swiper-button-prev {
+        @include swiper-button;
+    }
+    .swiper-button-next {
+        @include swiper-button;
+    }
+
+}
+
+.industry-more_btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    //border: none;
+    border-radius: 50%;
+    border: 1px #fff solid;
+    background-color: $buttonBackground;
+    @media (max-width: $breakpoint768) {
+        width: 30px;
+        height: 30px;
+    }
+    &::after {
+        content: 'next';
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: swiper-icons, sans-serif;
+        @media (max-width: $breakpoint768) {
+            font-size: 17px;
+        }
+    }
+    &:hover {
+        background-color: $buttonBackgroundHover;
+    }
+    //svg {
+    //    transform: rotate(90deg);
+    //
+    //}
+}
