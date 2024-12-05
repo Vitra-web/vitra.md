@@ -121,11 +121,13 @@ Route::group(['prefix' => 'panel'],function () {
         Route::get('/logout', '\App\Http\Controllers\Auth\AuthController@logout')->name('logout');
         Route::get('/', '\App\Http\Controllers\Admin\StatisticController@main')->name('statistic');
         Route::get('/show/{mail}', '\App\Http\Controllers\Admin\StatisticController@show')->name('statistic.show');
+        Route::patch('/mail/{mail}', '\App\Http\Controllers\Admin\StatisticController@update')->name('statistic.update');
         Route::get('/change-status/{mail}/{status}', '\App\Http\Controllers\Admin\StatisticController@changeStatus')->name('statistic.changeStatus');
         Route::get('/orders', '\App\Http\Controllers\Admin\OrderController@main')->name('orders');
         Route::get('/orders/{order}', '\App\Http\Controllers\Admin\OrderController@show')->name('order.show');
         Route::get('/order-check/{order}', '\App\Http\Controllers\Admin\OrderController@check')->name('order.check');
         Route::get('/order-return/{order}', '\App\Http\Controllers\Admin\OrderController@return')->name('order.return');
+
         Route::patch('/post-order/{order}', '\App\Http\Controllers\Admin\OrderController@update')->name('order.update');
 
         Route::post('/editor/upload', '\App\Http\Controllers\Admin\ProductController@editor')->name('ckeditor.upload');

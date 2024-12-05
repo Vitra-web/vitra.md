@@ -53,10 +53,13 @@ class Mail extends Model
     }
 
 
-    const STATUS_NEW = 0;
-    const STATUS_VIEW = 1;
-    const STATUS_ANSWERED = 2;
-    const STATUS_CLOSE = 3;
+    const STATUS_NEW = 'new';
+    const STATUS_VIEW = 'viewed';
+    const STATUS_WORK = 'work';
+    const STATUS_CLOSE = 'close';
+    const STATUS_CANCELLED = 'cancelled';
+    const STATUS_STOPPED = 'stopped';
+
 
 
     static function getStatus() {
@@ -64,8 +67,11 @@ class Mail extends Model
 
             self::STATUS_NEW => trans('panel.status_new'),
             self::STATUS_VIEW => trans('panel.status_view'),
-            self::STATUS_ANSWERED => trans('panel.status_answered'),
+            self::STATUS_WORK => trans('panel.status_work'),
             self::STATUS_CLOSE => trans('panel.status_close'),
+            self::STATUS_CANCELLED => trans('panel.status_cancelled'),
+            self::STATUS_STOPPED => trans('panel.status_stopped'),
+
 
         ];
     }
@@ -82,5 +88,13 @@ class Mail extends Model
     public function product()
     {
         return $this->belongsTo('App\Models\Product', 'product_id', 'id');
+    }
+    public function userClosed()
+    {
+        return $this->belongsTo('App\Models\User', 'user_closed', 'id');
+    }
+    public function manager()
+    {
+        return $this->belongsTo('App\Models\User', 'manager_id', 'id');
     }
 }

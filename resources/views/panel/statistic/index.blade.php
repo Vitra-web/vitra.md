@@ -12,7 +12,7 @@
                     <div class="row">
 
 
-                        <div class="col-md-4 row justify-content-between  me-4">
+                        <div class="col-md-4 row justify-content-between ">
                             <div class="col-6 row align-items-center">
                                 <label class="col-3" for="date_from">{{trans('panel.date_from')}}</label>
                                 <input  type="date" name="date_from" value="{{request()->get('date_from') }}" id="date_from" class="form-control datapicker col-9  ">
@@ -22,14 +22,24 @@
                                  <input type="date" name="date_to" value="{{request()->get('date_to')}}" id="date_to" class="form-control datapicker col-8 ">
                              </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 pl-4">
                             <select name="status" id="" class="form-select form-control">
                                 <option value="">{{trans('panel.choose_status')}}</option>
-                                <option value="0" {{request()->get('status') != null && request()->get('status') == '0' ? 'selected':''}}>{{trans('panel.status_new')}}</option>
-                                <option value="1" {{request()->get('status') == '1' ? 'selected':''}}>{{trans('panel.status_view')}}</option>
-                                <option value="2" {{request()->get('status')== '2' ? 'selected':''}}>{{trans('panel.status_answered')}}</option>
+                                <option value="new" {{request()->get('status')  == 'new' ? 'selected':''}}>{{trans('panel.status_new')}}</option>
+                                <option value="viewed" {{request()->get('status') == 'viewed' ? 'selected':''}}>{{trans('panel.status_view')}}</option>
+                                <option value="work" {{request()->get('status')== 'work' ? 'selected':''}}>{{trans('panel.status_work')}}</option>
+                                <option value="close" {{request()->get('status')== 'close' ? 'selected':''}}>{{trans('panel.status_close')}}</option>
+                                <option value="cancelled" {{request()->get('status')== 'cancelled' ? 'selected':''}}>{{trans('panel.status_cancelled')}}</option>
+                                <option value="stopped" {{request()->get('status')== 'stopped' ? 'selected':''}}>{{trans('panel.status_stopped')}}</option>
+                            </select>
+                        </div>
 
-
+                        <div class=" col-6 col-md-2">
+                            <select class="custom-select form-control" name="manager_id" id="manager_id" >
+                                <option value="" >{{trans('panel.select_manager')}}</option>
+                                @foreach($managers as $item)
+                                    <option value="{{$item->id}}" {{request()->get('manager_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -47,7 +57,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <button type="submit" class="btn btn-primary mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -122,12 +132,15 @@
                             <thead>
                             <tr>
                                 <th>{{trans('panel.status')}}</th>
-                                <th>{{trans('panel.action')}}</th>
+                                <th>{{trans('panel.date')}}</th>
+                                <th>{{trans('panel.manager')}}</th>
+{{--                                <th>{{trans('panel.action')}}</th>--}}
                                 <th>{{trans('panel.source')}}</th>
                                 <th>{{trans('panel.name')}}</th>
                                 <th>Email</th>
                                 <th>{{trans('panel.phone')}}</th>
-                                <th>{{trans('panel.date')}}</th>
+
+
                                 <th>{{trans('panel.message')}}</th>
 
                                 <th>{{trans('panel.vacancy_name')}}</th>
@@ -137,34 +150,38 @@
                             </thead>
                             <tbody>
                             @foreach($mails as $mail)
-                                <tr  style="background-color: {{$mail->status==0 ? '#bcd5e5': 'white' }} ">
+                                <tr  style="background-color: {{$mail->status==0 ? '#bcd5e5': 'white' }} " class='clickable-row' data-href='{{route('statistic.show', $mail->id)}}'>
 
                                     @php
-                                    if($mail->status == 0 )
+                                    if($mail->status == 'new' )
                                         $statusColor = 'text-danger';
-                                    elseif($mail->status == 1 )
+                                    elseif($mail->status == 'viewed' )
                                          $statusColor = 'text-primary';
-                                     elseif($mail->status == 2 )
+                                     elseif($mail->status == 'work' )
+                                        $statusColor = 'text-info';
+                                     elseif($mail->status == 'close')
                                         $statusColor = 'text-success';
-
+                                     else $statusColor = 'text-secondary';
                                     @endphp
 
                                     <td class="{{$statusColor}}"> {{$mail->statusName}}</td>
-                                    <td>
-                                        <div class="">
-                                            <a href="{{route('statistic.show', $mail->id)}}" class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </td>
+{{--                                    <td>--}}
+{{--                                        <div class="">--}}
+{{--                                            <a href="{{route('statistic.show', $mail->id)}}" class="btn btn-sm btn-info">--}}
+{{--                                                <i class="fas fa-eye"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
+{{--                                    </td>--}}
+                                    <td> {{$mail->created_at}} </td>
+                                    <td> {{isset($mail->manager->name)? $mail->manager->name: '-'}}</td>
                                     <td> {{$mail->sourceName}}</td>
                                     <td> {{$mail->name . ' '. $mail->surname}}</td>
                                     <td> {{$mail->email}}</td>
                                     <td> {{$mail->phone}}</td>
-                                    <td> {{$mail->created_at}}</td>
+
+
                                     <td> {{strlen($mail->message) > 60 ? substr($mail->message, 0, 60).'...' : $mail->message }}</td>
                                     <td> {{$mail->vacancy->name_ro ?? '-'}}</td>
-
 
 
                                 </tr>
@@ -197,14 +214,14 @@
                                 <i class="la la-eye-slash mr-2"></i><a href="#">{{trans('panel.field_visibility')}} </a>
                                 <ul class="ul-choose">
                                     <li data-id="0">{{trans('panel.status')}}</li>
-                                    <li data-id="1">{{trans('panel.action')}}</li>
-                                    <li data-id="2">{{trans('panel.source')}}</li>
-                                    <li data-id="3">{{trans('panel.name')}}</li>
-                                    <li data-id="4">Email</li>
-                                    <li data-id="4">{{trans('panel.phone')}}</li>
-                                    <li data-id="5">{{trans('panel.date')}}</li>
-                                    <li data-id="6">{{trans('panel.message')}}</li>
-                                    <li data-id="7">{{trans('panel.vacancy_name')}}</li>
+                                    <li data-id="1">{{trans('panel.date')}}</li>
+                                    <li data-id="2">{{trans('panel.close_by')}}</li>
+                                    <li data-id="3">{{trans('panel.source')}}</li>
+                                    <li data-id="4">{{trans('panel.name')}}</li>
+                                    <li data-id="5">Email</li>
+                                    <li data-id="6">{{trans('panel.phone')}}</li>
+                                    <li data-id="7">{{trans('panel.message')}}</li>
+                                    <li data-id="8">{{trans('panel.vacancy_name')}}</li>
 
 
                                 </ul>
@@ -280,7 +297,7 @@
                             "previous": "<"
                         }
                     },
-                    order: [[6, 'desc']],
+                    order: [[1, 'desc']],
                     buttons: [
                         {
                             text: 'csv',
@@ -315,18 +332,26 @@
                             }
                         },
                     ],
-                    columnDefs: [{
-                        orderable: false,
-                        targets: 1
-                    }]
+                    // columnDefs: [{
+                    //     orderable: false,
+                    //     targets: 1
+                    // }]
                 });
 
+
+                $(".clickable-row").click(function() {
+                    window.location = $(this).data("href");
+                });
 
             </script>
 
         @endpush
         @section('after_styles')
             <style>
+
+                .clickable-row {
+                    cursor:pointer;
+                }
                 table {
                     display: block;
                     overflow-x: auto;

@@ -18,47 +18,15 @@
                     </a>
 
                 </div>
-                <div class="d-flex mb-2">
+                <div class=" mb-3">
                     <div class="me-4">
                         @if($mail->name)
                         <h1 class="m-0">De la {{$mail->name.' '.$mail->surname}}</h1>
                         @endif
                     </div>
-                    <div class="position-relative">
-                        <button class="btn {{$statusColor}}" id="status_btn">{{$mail->statusName}}</button>
-                        <div class="status_block">
-                            <div>
-                                    <a href="{{route('statistic.changeStatus', [$mail->id, 0] )}}" class="status_link {{$mail->status == 0 ? 'active': ''}}">
-                                        <img class="status_image" src="{{asset('images/admin-panel/mail.png')}}" alt="new message">
-                                        <span class="text-danger">{{trans('panel.status_new')}}</span>
-                                    </a>
 
-
-                                    <a href="{{route('statistic.changeStatus', [$mail->id, 1] )}}" class="status_link {{$mail->status == 1 ? 'active': ''}}">
-                                        <img class="status_image" src="{{asset('images/admin-panel/view.png')}}" alt="new message">
-                                        <span class="text-primary">{{trans('panel.status_view')}}</span>
-                                    </a>
-
-                                    <a href="{{route('statistic.changeStatus', [$mail->id, 2] )}}" class="status_link {{$mail->status == 2 ? 'active': ''}}">
-                                        <img class="status_image" src="{{asset('images/admin-panel/resend.png')}}" alt="new message">
-                                        <span class="text-success">{{trans('panel.status_answered')}}</span>
-                                    </a>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group ms-3 col-sm-3">
-
-                        <select class="custom-select form-control" name="manager_id" id="industry" >
-                            <option value="" >Managerii</option>
-                            @foreach($managers as $item)
-                                <option value="{{$item->id}}" {{$mail->manager_id == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
+
 
             </div><!-- /.container-fluid -->
         </div>
@@ -68,6 +36,59 @@
 
         <section class="content">
             <div class="container-fluid ml-4">
+                <form action="{{route('statistic.update', $mail->id)}}" method="post" class="w-100" enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
+                    <div class="row mb-3">
+                        {{--                    <div class="position-relative col-2">--}}
+                        {{--                        <p>{{trans('panel.status')}}</p>--}}
+                        {{--                        <button class="btn {{$statusColor}}" id="status_btn">{{$mail->statusName}}</button>--}}
+                        {{--                        <div class="status_block">--}}
+                        {{--                            <div>--}}
+                        {{--                                <a href="{{route('statistic.changeStatus', [$mail->id, 0] )}}" class="status_link {{$mail->status == 0 ? 'active': ''}}">--}}
+                        {{--                                    <img class="status_image" src="{{asset('images/admin-panel/mail.png')}}" alt="new message">--}}
+                        {{--                                    <span class="text-danger">{{trans('panel.status_new')}}</span>--}}
+                        {{--                                </a>--}}
+
+
+                        {{--                                <a href="{{route('statistic.changeStatus', [$mail->id, 1] )}}" class="status_link {{$mail->status == 1 ? 'active': ''}}">--}}
+                        {{--                                    <img class="status_image" src="{{asset('images/admin-panel/view.png')}}" alt="new message">--}}
+                        {{--                                    <span class="text-primary">{{trans('panel.status_view')}}</span>--}}
+                        {{--                                </a>--}}
+
+                        {{--                                <a href="{{route('statistic.changeStatus', [$mail->id, 2] )}}" class="status_link {{$mail->status == 2 ? 'active': ''}}">--}}
+                        {{--                                    <img class="status_image" src="{{asset('images/admin-panel/resend.png')}}" alt="new message">--}}
+                        {{--                                    <span class="text-success">{{trans('panel.status_answered')}}</span>--}}
+                        {{--                                </a>--}}
+
+                        {{--                            </div>--}}
+
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
+                        <div class="form-group col-2">
+                            <label class="pl-3" for="status">{{trans('panel.status')}}</label>
+                            <select class="custom-select form-control" name="status" id="status" >
+                                <option value="viewed" {{$mail->status == 'viewed' ? 'selected' : ''}}>{{trans('panel.status_view')}}</option>
+                                <option value="work" {{$mail->status == 'work' ? 'selected' : ''}}>{{trans('panel.status_work')}}</option>
+                                <option value="close" {{$mail->status == 'close' ? 'selected' : ''}}>{{trans('panel.status_close')}}</option>
+                                <option value="cancelled" {{$mail->status == 'cancelled' ? 'selected' : ''}}>{{trans('panel.status_cancelled')}}</option>
+                                <option value="stopped" {{$mail->status == 'stopped' ? 'selected' : ''}}>{{trans('panel.status_stopped')}}</option>
+                            </select>
+                        </div>
+
+                        @if(\Illuminate\Support\Facades\Auth::user()->role_id != 3)
+                        <div class="form-group ms-3 col-2">
+                            <label class="pl-3" for="manager_id">{{trans('panel.managers')}}</label>
+                            <select class="custom-select form-control" name="manager_id" id="manager_id" >
+                                <option value="" >{{trans('panel.select_manager')}}</option>
+                                @foreach($managers as $item)
+                                    <option value="{{$item->id}}" {{$mail->manager_id == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @endif
+
+                    </div>
                 <div class="row ">
 
 
@@ -170,6 +191,13 @@
 
                 </div>
 
+                    <div class="form-group text-center d-flex justify-content-center">
+                        <input type="submit" class="btn btn-primary" id="saveBtn" name="update" value="{{trans('panel.save')}}">
+                        <div class="spinner-border text-primary ms-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </form>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

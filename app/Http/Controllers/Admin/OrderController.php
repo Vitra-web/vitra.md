@@ -7,7 +7,9 @@ use App\Models\Chat;
 use App\Models\Mail;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
@@ -21,6 +23,8 @@ class OrderController extends Controller
             return $q->whereBetween('created_at', [$request->date_from, $request->date_to]);
         })->when($request->status != null, function ($q) use ($request) {
             return $q->where('status',$request->status);
+        })->when($request->manager_id != null, function ($q) use ($request) {
+            return $q->where('manager_id',$request->manager_id);
         })->when($request->deliveryType != null, function ($q) use ($request) {
             return $q->where('deliveryType',$request->deliveryType);
         })->when($request->paymentType != null, function ($q) use ($request) {
@@ -37,21 +41,25 @@ class OrderController extends Controller
 
         $openOrders = Order::when($request->date_from != null && $request->date_to != null, function ($q) use ($request) {
             return $q->whereBetween('created_at', [$request->date_from, $request->date_to]);
-        })->where('status', 'open')->get();
+        })->where('status', 'work')->get();
 
 
         $closeOrders = Order::when($request->date_from != null && $request->date_to != null, function ($q) use ($request) {
             return $q->whereBetween('created_at', [$request->date_from, $request->date_to]);
-        })->where('status', 'close')->get();
+        })->where('status', 'offer')->get();
 
+        $managers = User::where('role_id', 3)->get();
 
-        return view('panel.orders.index', compact('title', 'orders', 'totalOrders', 'newOrders', 'openOrders', 'closeOrders'));
+        return view('panel.orders.index', compact('title', 'orders', 'totalOrders', 'newOrders', 'openOrders', 'closeOrders', 'managers'));
     }
 
     public function show(Order $order) {
         $title = trans('panel.see_order');
 
+        $managers = User::where('role_id', 3)->get();
         $products = json_decode($order->products);
+        if($order->status == 'new')
+            $order->update(['status'=>'viewed']);
         foreach ($products as $product) {
 //            dump($product->product_variant);
             $product->product = Product::where('id',$product->product->id )->first();
@@ -64,7 +72,7 @@ class OrderController extends Controller
         }
 
 //        dd($products);
-        return view('panel.orders.edit', compact('title', 'order', 'products'));
+        return view('panel.orders.edit', compact('title', 'order', 'products', 'managers'));
 
     }
 
@@ -72,11 +80,38 @@ class OrderController extends Controller
 
         $data= $request->validate([
             'status'=>'required|string',
+            'manager_id'=>'integer|nullable',
             'paymentType'=>'required|string',
             'deliveryType'=>'required|string',
         ]);
+        $user = Auth::user();
 
-        $order->update(['status'=>$data['status'], 'paymentType'=>$data['paymentType'],'deliveryType'=>$data['deliveryType'] ]);
+        if($data['status'] == 'work') {
+            $data['user_work']= $user->id;
+        }
+        elseif($data['status'] == 'offer') {
+            $data['user_offer']= $user->id;
+
+        }
+        elseif($data['status'] == 'won') {
+            $data['user_won']= $user->id;
+
+        }
+        elseif($data['status'] == 'visit') {
+            $data['user_visit']= $user->id;
+        }
+
+        elseif($data['status'] == 'lost') {
+            $data['user_lost']= $user->id;
+        }
+
+        if($user->role_id ==3 )
+            $data['manager_id']= $user->id;
+        elseif(! $data['manager_id'])
+            $data['manager_id']= $user->id;
+
+
+        $order->update($data);
 
         return redirect()->route('orders');
 

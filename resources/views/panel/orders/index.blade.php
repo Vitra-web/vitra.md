@@ -8,8 +8,8 @@
         <section class="content">
                 <div class="container-fluid">
 
-                <form action="" method="GET" class="py-3 mb-3">
-                    <div class="row">
+                <form action="" method="GET" class=" mb-3 py-3">
+                    <div class="row align-items-center">
 
                         <div class="col-md-4 row justify-content-between  ">
                             <div class="col-6  row align-items-center">
@@ -22,14 +22,25 @@
                             </div>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <select name="status" id="" class="form-select form-control">
                                 <option value="">{{trans('panel.status')}}</option>
                                 <option value="new" {{request()->get('status') == 'new' ? 'selected':''}}>{{trans('panel.status_new')}}</option>
-                                <option value="open" {{request()->get('status') == 'open' ? 'selected':''}}>{{trans('panel.status_process')}}</option>
-                                <option value="close" {{request()->get('status')== 'close' ? 'selected':''}}>{{trans('panel.status_close')}}</option>
-                                <option value="return" {{request()->get('status')== 'return' ? 'selected':''}}>{{trans('panel.status_return')}}</option>
+                                <option value="viewed" {{request()->get('status') == 'viewed' ? 'selected':''}}>{{trans('panel.status_view')}}</option>
+                                <option value="work" {{request()->get('status')== 'work' ? 'selected':''}}>{{trans('panel.status_work')}}</option>
+                                <option value="offer" {{request()->get('status')== 'offer' ? 'selected':''}}>{{trans('panel.status_offer')}}</option>
+                                <option value="won" {{request()->get('status')== 'won' ? 'selected':''}}>{{trans('panel.status_won')}}</option>
+                                <option value="visit" {{request()->get('status')== 'visit' ? 'selected':''}}>{{trans('panel.status_visit')}}</option>
+                                <option value="lost" {{request()->get('status')== 'lost' ? 'selected':''}}>{{trans('panel.status_lost')}}</option>
 
+                            </select>
+                        </div>
+                        <div class=" col-6 col-md-2">
+                            <select class="custom-select form-control" name="manager_id" id="manager_id" >
+                                <option value="" >{{trans('panel.select_manager')}}</option>
+                                @foreach($managers as $item)
+                                    <option value="{{$item->id}}" {{request()->get('manager_id') == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -49,7 +60,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <button type="submit" class="btn btn-primary mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -126,7 +137,8 @@
                             <thead>
                             <tr>
                                 <th >{{trans('panel.status')}}</th>
-                                <th>{{trans('panel.action')}}</th>
+                                <th>{{trans('panel.date')}}</th>
+                                <th>{{trans('panel.manager')}}</th>
                                 <th>{{trans('panel.delivery_type')}}</th>
                                 <th>{{trans('panel.payment_type')}}</th>
                                 <th>{{trans('panel.name')}}</th>
@@ -134,7 +146,7 @@
                                 <th>{{trans('panel.phone')}}</th>
                                 <th>{{trans('panel.location')}}</th>
                                 <th>{{trans('panel.address')}}</th>
-                                <th>{{trans('panel.date')}}</th>
+
                                 <th>{{trans('panel.total_price')}}</th>
                                 <th>{{trans('panel.delivery_price')}}</th>
 
@@ -144,15 +156,10 @@
                             </thead>
                             <tbody>
                             @foreach($orders as $order)
-                                <tr style="background-color: {{$order->status== 'new' ? '#bcd5e5': 'white' }} ">
+                                <tr style="background-color: {{$order->status== 'new' ? '#bcd5e5': 'white' }} "  class='clickable-row' data-href='{{route('order.show', $order->id)}}'>
                                     <td> {{$order->statusTitle}}</td>
-                                    <td>
-                                        <div class="">
-                                            <a href="{{route('order.show', $order->id)}}" class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </div>
-                                    </td>
+                                    <td> {{$order->created_at}} </td>
+                                    <td> {{isset($order->manager->name)? $order->manager->name: '-'}}</td>
                                     <td> {{$order->deliveryName}}</td>
                                     <td> {{$order->paymentName}}</td>
                                     <td> {{$order->name . ' '. $order->surname}}</td>
@@ -160,7 +167,7 @@
                                     <td> {{$order->phone}}</td>
                                     <td> {{$order->location}}</td>
                                     <td> {{$order->address}}</td>
-                                    <td> {{$order->created_at}}</td>
+
                                     <td> {{$order->priceTotal}}</td>
                                     <td> {{$order->priceDelivery}}</td>
 
@@ -197,15 +204,16 @@
                                 <i class="la la-eye-slash mr-2"></i><a href="#">{{trans('panel.field_visibility')}}</a>
                                 <ul class="ul-choose">
                                     <li data-id="0">{{trans('panel.status')}}</li>
-                                    <li data-id="1">{{trans('panel.action')}}</li>
-                                    <li data-id="2">{{trans('panel.delivery_type')}} </li>
-                                    <li data-id="3">{{trans('panel.payment_type')}}</li>
-                                    <li data-id="4">{{trans('panel.name')}}</li>
-                                    <li data-id="5">Email</li>
-                                    <li data-id="6">{{trans('panel.phone')}}</li>
-                                    <li data-id="7">{{trans('panel.location')}}</li>
-                                    <li data-id="8">{{trans('panel.address')}}</li>
-                                    <li data-id="9">{{trans('panel.date')}}</li>
+                                    <li data-id="1">{{trans('panel.date')}}</li>
+                                    <li data-id="2">{{trans('panel.manager')}} </li>
+                                    <li data-id="3">{{trans('panel.delivery_type')}} </li>
+                                    <li data-id="4">{{trans('panel.payment_type')}}</li>
+                                    <li data-id="5">{{trans('panel.name')}}</li>
+                                    <li data-id="6">Email</li>
+                                    <li data-id="7">{{trans('panel.phone')}}</li>
+                                    <li data-id="8">{{trans('panel.location')}}</li>
+                                    <li data-id="9">{{trans('panel.address')}}</li>
+
                                     <li data-id="10">{{trans('panel.total_price')}}</li>
                                     <li data-id="11">{{trans('panel.delivery_price')}}</li>
 
@@ -280,7 +288,7 @@
                             "previous": "<"
                         }
                     },
-                    order: [[9, 'desc']],
+                    order: [[1, 'desc']],
                     buttons: [
                         {
                             text: 'csv',
@@ -315,18 +323,26 @@
                             }
                         },
                     ],
-                    columnDefs: [{
-                        orderable: false,
-                        targets: 1
-                    }]
+                    // columnDefs: [{
+                    //     orderable: false,
+                    //     targets: 1
+                    // }]
                 });
 
+                $(".clickable-row").click(function() {
+                    window.location = $(this).data("href");
+                });
 
             </script>
 
         @endpush
         @section('after_styles')
             <style>
+
+                .clickable-row {
+                    cursor:pointer;
+                }
+
                 table {
                     display: block;
                     overflow-x: auto;

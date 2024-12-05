@@ -387,4 +387,7 @@ class ScraperController extends Controller
         });
 
     }
+    public function updatePrice1c() {
+
+    }
 }

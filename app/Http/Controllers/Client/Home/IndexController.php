@@ -205,10 +205,10 @@ class IndexController extends Controller
 
 
             } else {
-                $products = Product::where($name, 'LIKE', '%' . $request->search . "%")->orWhere('code_1c', 'LIKE', '%' . $request->search . "%" )->where('status', 1)->orderBy($name)->get();
-                $categories = Category::where($name, 'LIKE', '%' . $request->search . "%")->where('status', 1)->get();
-                $subcategories = Subcategory::where($name, 'LIKE', '%' . $request->search . "%")->where('status', 1)->get();
-                $news = News::where($name, 'LIKE', '%' . $request->search . "%")->get();
+                $products = Product::where('name_ro', 'LIKE', '%' . $request->search . "%")->orWhere('name_ru', 'LIKE', '%' . $request->search . "%")->orWhere('name_en', 'LIKE', '%' . $request->search . "%")->orWhere('code_1c', 'LIKE', '%' . $request->search . "%" )->where('status', 1)->orderBy($name)->get();
+                $categories = Category::where('name_ro', 'LIKE', '%' . $request->search . "%")->orWhere('name_ru', 'LIKE', '%' . $request->search . "%")->orWhere('name_en', 'LIKE', '%' . $request->search . "%")->where('status', 1)->get();
+                $subcategories = Subcategory::where('name_ro', 'LIKE', '%' . $request->search . "%")->orWhere('name_ru', 'LIKE', '%' . $request->search . "%")->orWhere('name_en', 'LIKE', '%' . $request->search . "%")->where('status', 1)->get();
+                $news = News::where('name_ro', 'LIKE', '%' . $request->search . "%")->orWhere('name_ru', 'LIKE', '%' . $request->search . "%")->orWhere('name_en', 'LIKE', '%' . $request->search . "%")->get();
                 if ($products) {
 //                $output .= '<div class="search_block_item"><span class="search_block_title"></span><a class="search_block_link" href="/search-page/'.$request->search .'">'.trans('labels.all').'</a></div>';
                     foreach ($products as $key => $product) {

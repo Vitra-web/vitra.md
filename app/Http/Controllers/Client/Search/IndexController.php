@@ -20,13 +20,14 @@ class IndexController extends Controller
         $language= new  LanguageHandler();
         $name='name_'.App::getLocale();
         $similarSearch = [];
-//        dd($name);
-        $products = Product::where($name, 'LIKE', '%' . $request->value . "%")->orWhere('code_1c', 'LIKE', '%' . $request->value . "%" )->where('status', 1)->orderBy($name)->paginate(24);
-        $searchCategories = Category::where($name, 'LIKE', '%' . $request->value . "%")->where('status', 1)->orderBy($name)->get();
-        $searchCategory = Category::where($name, 'LIKE', '%' . $request->value . "%")->where('status', 1)->first();
-        $searchSubcategories = Subcategory::where($name, 'LIKE', '%' . $request->value . "%")->where('status', 1)->orderBy($name)->get();
-        $searchSubcategory = Subcategory::where($name, 'LIKE', '%' . $request->value . "%")->where('status', 1)->first();
-        $searchSolutions = Resolve::where($name, 'LIKE', '%' . $request->value . "%")->get();
+//        dd($request->value);
+
+        $products = Product::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->orWhere('code_1c', 'LIKE', '%' . $request->value . "%" )->where('status', 1)->orderBy($name)->paginate(24);
+        $searchCategories = Category::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->where('status', 1)->orderBy($name)->get();
+        $searchCategory = Category::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->where('status', 1)->first();
+        $searchSubcategories = Subcategory::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->orderBy($name)->get();
+        $searchSubcategory = Subcategory::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->first();
+        $searchSolutions = Resolve::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->get();
 
         if(count($products)>0) {
             $products = favoriteFilter($products);
@@ -45,7 +46,7 @@ class IndexController extends Controller
             $recommendSubcategories = Subcategory::where('status', 1)->where('recommend', 1 )->get();
         } else $recommendSubcategories = [];
 //        dd($seeMoreSubcategories);
-        $news = News::where($name, 'LIKE', '%' . $request->value . "%")->get();
+        $news = News::where('name_ro', 'LIKE', '%' . $request->value . "%")->orWhere('name_ru', 'LIKE', '%' . $request->value . "%")->orWhere('name_en', 'LIKE', '%' . $request->value . "%")->get();
         $title = $language->replace('Cautare', 'Поиск','Search') ;
         $value = $request->value;
 

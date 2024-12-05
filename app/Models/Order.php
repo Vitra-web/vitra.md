@@ -11,16 +11,22 @@ class Order extends Model
     protected $guarded = false;
 
     const STATUS_NEW = 'new';
-    const STATUS_OPEN = 'open';
-    const STATUS_CLOSE = 'close';
-    const STATUS_RETURNED = 'return';
+    const STATUS_VIEW = 'viewed';
+    const STATUS_WORK = 'work';
+    const STATUS_OFFER = 'offer';
+    const STATUS_WON = 'won';
+    const STATUS_VISIT = 'visit';
+    const STATUS_LOST = 'lost';
 
     static function getStatus() {
         return [
             self::STATUS_NEW => trans('panel.status_new'),
-            self::STATUS_OPEN => trans('panel.status_process'),
-            self::STATUS_CLOSE => trans('panel.status_close'),
-            self::STATUS_RETURNED => trans('panel.status_return'),
+            self::STATUS_VIEW => trans('panel.status_view'),
+            self::STATUS_WORK => trans('panel.status_work'),
+            self::STATUS_OFFER => trans('panel.status_offer'),
+            self::STATUS_WON => trans('panel.status_won'),
+            self::STATUS_VISIT => trans('panel.status_visit'),
+            self::STATUS_LOST => trans('panel.status_lost'),
         ];
     }
     public function getStatusTitleAttribute() {
@@ -57,5 +63,9 @@ class Order extends Model
         return self::getPayment()[$this->paymentType];
     }
 
+    public function manager()
+    {
+        return $this->belongsTo('App\Models\User', 'manager_id', 'id');
+    }
 
 }

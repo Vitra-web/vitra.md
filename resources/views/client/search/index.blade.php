@@ -52,7 +52,9 @@
                 <div class="product_items_cards" id="products" >
                     <div class=" product-more__swiper-wrapper row">
                         @foreach($products as $product)
+                            @if($product->status == 1)
                             @include('client.components.productPage.productCard', ['$product'=>$product])
+                            @endif
                         @endforeach
                     </div>
                     <div class="pagination-container">
@@ -65,10 +67,14 @@
                     <p class="tab_item_title">{{trans('labels.see_categories')}} </p>
                     <div class="category-items__cards">
                         @foreach($searchCategories as $category)
+                            @if($category->status == 1)
                             @include('client.components.blocks.categoryCard', ['category'=>$category, 'route'=>'client.category'])
+                            @endif
                         @endforeach
                             @foreach($searchSubcategories as $subcategory)
+                                @if($subcategory->status == 1)
                                 @include('client.components.blocks.categoryCard', ['category'=>$subcategory, 'route'=>'client.subcategory'])
+                                @endif
                             @endforeach
                     </div>
                 </div>

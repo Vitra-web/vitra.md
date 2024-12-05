@@ -27,24 +27,39 @@
 
 
                                 <div class="form_block row mb-3">
-                                    <div class="form-group col-sm-3">
-                                        <label for="status">{{trans('panel.status')}}</label>
+                                    <div class="form-group col-6 col-sm-2">
+                                        <label class="pl-3" for="status">{{trans('panel.status')}}</label>
                                         <select class="custom-select form-control" name="status" id="status" >
-                                            <option value="new" {{$order->status == 'new' ? 'selected' : ''}}>{{trans('panel.status_new')}}</option>
-                                            <option value="open" {{$order->status == 'open' ? 'selected' : ''}}>{{trans('panel.status_process')}}</option>
-                                            <option value="close" {{$order->status == 'close' ? 'selected' : ''}}>{{trans('panel.status_close')}}</option>
+                                            <option value="viewed" {{$order->status == 'viewed' ? 'selected' : ''}}>{{trans('panel.status_view')}}</option>
+                                            <option value="work" {{$order->status == 'work' ? 'selected' : ''}}>{{trans('panel.status_work')}}</option>
+                                            <option value="offer" {{$order->status == 'offer' ? 'selected' : ''}}>{{trans('panel.status_offer')}}</option>
+                                            <option value="won" {{$order->status == 'won' ? 'selected' : ''}}>{{trans('panel.status_won')}}</option>
+                                            <option value="visit" {{$order->status == 'visit' ? 'selected' : ''}}>{{trans('panel.status_visit')}}</option>
+                                            <option value="lost" {{$order->status == 'lost' ? 'selected' : ''}}>{{trans('panel.status_lost')}}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-sm-3">
-                                        <label for="paymentType">{{trans('panel.payment_type')}}</label>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->role_id != 3)
+                                        <div class="form-group ms-3 col-6 col-sm-3">
+                                            <label class="pl-3" for="manager_id">{{trans('panel.managers')}}</label>
+                                            <select class="custom-select form-control" name="manager_id" id="manager_id" >
+                                                <option value="" >{{trans('panel.select_manager')}}</option>
+                                                @foreach($managers as $item)
+                                                    <option value="{{$item->id}}" {{$order->manager_id == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
+
+                                    <div class="form-group col-6 col-sm-3">
+                                        <label class="pl-3" for="paymentType">{{trans('panel.payment_type')}}</label>
                                         <select class="custom-select form-control" name="paymentType" id="paymentType" >
                                             <option value="1" {{$order->paymentType == 1 ? 'selected' : ''}}>{{trans('panel.payment_card')}}</option>
                                             <option value="2" {{$order->paymentType == 2 ? 'selected' : ''}}>{{trans('panel.payment_transfer')}}</option>
                                             <option value="3" {{$order->paymentType == 3 ? 'selected' : ''}}>{{trans('panel.payment_cash')}}</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-sm-3">
-                                        <label for="deliveryType">{{trans('panel.delivery_type')}}</label>
+                                    <div class="form-group col-6 col-sm-3">
+                                        <label class="pl-3" for="deliveryType">{{trans('panel.delivery_type')}}</label>
                                         <select class="custom-select form-control" name="deliveryType" id="deliveryType" >
                                             <option value="1" {{$order->deliveryType == 1 ? 'selected' : ''}}>{{trans('panel.delivery_vitra')}}</option>
                                             <option value="2" {{$order->deliveryType == 2 ? 'selected' : ''}}>{{trans('panel.delivery_nova')}}</option>

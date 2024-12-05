@@ -1,16 +1,21 @@
 @extends('layouts.admin')
 
+@php
+  $currentUser =  \Illuminate\Support\Facades\Auth::user();
+@endphp
 @section('content')
 
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
+                @if($currentUser->role_id == 1 || $currentUser->role_id == 2 )
                 <div class="mb-2">
                     <a href="{{route('user')}}" class="btn btn-secondary" >
                         <i class="fas fa-backward mr-2"></i>
                     </a>
 
                 </div>
+                @endif
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">{{$title}}</h1>
@@ -30,7 +35,7 @@
                         @csrf
                         @method('patch')
 
-                        @if($user->role->name !== 'manager')
+                        @if($currentUser->role_id == 1 || $currentUser->role_id == 2 )
                         <div class="form_block row mb-4">
                             <div class="form-group col-sm-3">
                                 <label class="form_label" for="exampleSelectBorder">{{trans('panel.status')}}</label>

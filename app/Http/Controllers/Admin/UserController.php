@@ -17,17 +17,20 @@ class UserController extends Controller
     public function selectRole() {
         $roleName = Auth::user()->role->name;
         if($roleName =='admin') {
-            $roles=Role::all();
+            $roles=Role::query()->orderBy('sort_order')->get();
         }elseif($roleName =='content-manager')
-            $roles=Role::whereIn('name',  ['content-manager', 'manager', 'user'])->get();
-        elseif($roleName =='manager')
-            $roles=Role::whereIn('name',  ['manager', 'user'])->get();
-        else  $roles=Role::where('name',  'user')->get();
+            $roles=Role::whereIn('name',  ['content-manager', 'manager', 'user'])->orderBy('sort_order')->get();
+        elseif($roleName =='director managers')
+            $roles=Role::whereIn('name',  ['manager', 'user'])->orderBy('sort_order')->get();
+        else  $roles=Role::where('name',  'user')->orderBy('sort_order')->get();
         return $roles;
     }
     public function index()
     {
-        $users = User::all();
+
+        if(Auth::user()->role_id == 5) {
+            $users = User::where('role_id', 3)->get();
+        } else $users = User::all();
         $title = trans('panel.users');
         return view('panel.user.index', compact('users', 'title'));
 

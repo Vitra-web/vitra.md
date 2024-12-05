@@ -61,7 +61,7 @@
             <p class="feedback_call_form_title">{{trans('labels.request_call')}}</p>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" onclick="callHandler()"
-                 width="10" height="10" fill="#000" viewBox="0 0 492 492"
+                 width="25" height="25" fill="#000" viewBox="0 0 492 492"
                  style="enable-background:new 0 0 492 492; cursor: pointer" xml:space="preserve">
                 <g>
                     <g>
@@ -73,7 +73,7 @@
                 </svg>
         </div>
         <div class="feedback_call_form_bottom">
-            <img class="feedback_call_form_image" src="{{asset('images/logo-contact.png')}}" alt="Vitra">
+            <img loading="lazy" class="feedback_call_form_image" src="{{asset('images/svg/logo_black.svg')}}" alt="Vitra">
             @if($name == 'client.careers')
                 <a href="tel: +37379606 070" target="_blank" class="feedback_call_form_phone">+373 79 606 070</a>
             @else
@@ -97,7 +97,8 @@
             <div class="feedback_message_form_close" onclick="messageHandler()">
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     width="25" height="25" fill="#fff" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                     width="25" height="25" fill="#fff" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;"
+                     xml:space="preserve">
                 <g>
                     <g>
                         <path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872 c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872 c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052
@@ -234,6 +235,14 @@
 
         const routeName = '{!! $name !!}';
 
+
+            let pusher = null;
+
+
+
+        // Pusher.logToConsole = true;
+
+
         $("#feedback_phone").on("change keyup paste", function () {
             var output;
             var input = $("#feedback_phone").val();
@@ -307,13 +316,16 @@
 
         function messageHandler() {
             document.getElementById('feedbackMessage').classList.toggle('active')
-
+            if(document.querySelector('.feedback_message_form.active') && pusher ) {
+                pusher.unsubscribe('answer')
+            }
             if (routeName === 'client.careers') {
                 document.getElementById('feedbackCareerForm').classList.toggle('active')
             } else {
                 document.querySelector('.feedback_message_form').classList.toggle('active');
 
             }
+
             const callForm = document.querySelector('.feedback_call_form.active')
             if (callForm) {
                 callForm.classList.toggle('active')
@@ -370,8 +382,8 @@
             }
 
 
-            Pusher.logToConsole = true;
-            const pusher = new Pusher('{{config('broadcasting.connections.pusher.key')}}', {cluster: 'eu'});
+            // Pusher.logToConsole = true;
+            pusher = new Pusher('{{config('broadcasting.connections.pusher.key')}}', {cluster: 'eu'});
 
             const channel = pusher.subscribe('answer');
 
@@ -410,7 +422,7 @@
                     </g>
                 </svg>
                 <div class="logo_container">
-                    <img src="/images/litera-i-02.png" alt="Logo">
+                    <img loading="lazy" src="/images/svg/i.svg" alt="Logo">
                 </div>
 
                 <p class="feedback_message_form_title" style="color:${color} ">Hai să discutăm</p>
@@ -443,7 +455,7 @@
             <div class="feedback_message_block">
                 <textarea class="feedback_message_block_input" name="message" onkeydown="pressEnter(event, ${industryId})" placeholder="Tastează mesagul tău aici..."  type="text"></textarea>
                 <div class="feedback_message_block_btn" onclick="sendMessage(${industryId})" >
-                    <img class="feedback_message_block_icon" src="/images/communication.png" alt="Send icon">
+                    <img loading="lazy" class="feedback_message_block_icon" src="/images/communication.png" alt="Send icon">
                 </div>
             </div>
         </div>
