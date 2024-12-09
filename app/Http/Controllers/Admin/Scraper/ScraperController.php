@@ -10,11 +10,13 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use App\Models\ProductSubCategory;
+use App\Models\ProductVariant;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Goutte\Client as Scraper;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Datlechin\GoogleTranslate\Facades\GoogleTranslate;
 
@@ -387,7 +389,47 @@ class ScraperController extends Controller
         });
 
     }
-    public function updatePrice1c() {
+    public function updatePrice1c()
+    {
+        $login = 'HTTPServices';
+        $password = 'Vitra123$';
 
+        $industry_id = 4;
+
+        $categoriesSelected = Category::where('industry_id', $industry_id)->get();
+
+        foreach($categoriesSelected as $categorySelected) {
+            $subcategoriesSelected = Subcategory::where('industry_id', $industry_id)->where('category_id', $categorySelected->id)->get();
+
+           foreach($subcategoriesSelected as $subcategory) {
+               $code_1c = $subcategory->code_1c;
+               if ($code_1c) {
+                   $response = Http::withHeaders([
+                       'Authorization' => "Basic " . base64_encode($login . ":" . $password),
+                   ])->connectTimeout(200)->get('http://77.89.199.134/ViTRA_SQL/hs/WebSiteExchange/GetNomenclature/?GUID=' . $code_1c);
+                   $result = json_decode($response, true);
+                   dump($result);
+
+                   if(count($result['items']) > 0) {
+                       foreach ($result['items'] as $item) {
+                           $productExist = Product::where('code_uuid', $item['UUID'])->first();
+
+                           if ($productExist) {
+//                               dump($productExist);
+                               $productExist->update(['price'=>$item['price'], 'visible_1c'=>$item['is_visible']]);
+
+
+
+                           }
+
+                       }
+                   }
+               }
+           }
+        }
+
+dd('yes');
     }
+
+
 }

@@ -23,6 +23,7 @@ class VerifyCsrfToken extends Middleware
       '/vacancy-mail-full',
       '/vacancy-special',
       '/maib-callback',
+      '/odo-sync-callback',
 
     ];
 }

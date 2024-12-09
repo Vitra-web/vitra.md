@@ -59,7 +59,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('panel/*',function($view) {
 
             $view->with('newChats', Chat::where('checked', 0)->get());
-            $view->with('newMessages', Mail::where('status', 'new')->get());
+            $view->with('newMessages', Mail::when(Auth::user() && (Auth::user()->role_id == 3 || Auth::user()->role_id == 5) , function ($q) {
+                return $q->whereIn('source',[1, 2, 3, 4]);
+            })->when(Auth::user() && Auth::user()->role_id == 6 , function ($q) {
+                return $q->whereIn('source',[5,6,7]);
+            })->where('status', 'new')->get());
             $view->with('newOrders', Order::where('status', 'new')->get());
 
 

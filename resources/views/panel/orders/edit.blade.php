@@ -191,7 +191,7 @@
                                         <td> {{ $item->product->code_1c}}</td>
                                         <td> {{ $item->product->dimension}}</td>
                                         <td>
-                                        @if(isset($item->product_moduline) && isset($item->product_variant))
+                                        @if(isset($item->product_moduline))
                                         @if($item->product_moduline)
                                                 <div class="item__text">
                                                     <p class="item__label ">{{trans('labels.dimensions')}}: </p>
@@ -222,18 +222,23 @@
                                                     <p class="item__value"> {{$item->product_moduline->shelves_number}}</p>
                                                 </div>
 
-                                            @elseif($item->product_variant)
+
+                                           @endif
+                                           @endif
+
+                                            @if(isset($item->product_variant))
+                                            @if($item->product_variant)
                                                 <div class="item__text">
-                                                    <p class="item__label ">{{trans('labels.type')}}: </p>
-                                                    <p class="item__value"> {!! $language->replace($item->product_variant->type_ro, $item->product_variant->type_ru,$item->product_variant->type_en ) !!}</p>
+                                                    <p class="item__label ">Tip: </p>
+                                                    <p class="item__value"> {!! isset($item->product_variant->type_ro) ?  $language->replace($item->product_variant->type_ro, $item->product_variant->type_ru,$item->product_variant->type_en ) : '' !!}</p>
                                                 </div>
                                                 <div class="item__text">
                                                     <p class="item__label ">{{trans('labels.color')}}: </p>
                                                     <p class="item__value"> {!! $item->product_variant->color_name !!}</p>
-{{--                                                    <p class="item__value"> {!! $language->replace($item->product_variant->color_name_ro, $item->product_variant->color_name_ru,$item->product_variant->color_name_en ) !!}</p>--}}
+                                                    {{--                                                    <p class="item__value"> {!! $language->replace($item->product_variant->color_name_ro, $item->product_variant->color_name_ru,$item->product_variant->color_name_en ) !!}</p>--}}
                                                 </div>
                                             @endif
-                                           @endif
+                                            @endif
                                         </td>
                                         <td> {{$item->quantity}}</td>
                                         <td> {{$item->product->price}}</td>

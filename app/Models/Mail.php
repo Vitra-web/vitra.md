@@ -56,10 +56,10 @@ class Mail extends Model
     const STATUS_NEW = 'new';
     const STATUS_VIEW = 'viewed';
     const STATUS_WORK = 'work';
-    const STATUS_CLOSE = 'close';
-    const STATUS_CANCELLED = 'cancelled';
-    const STATUS_STOPPED = 'stopped';
-
+    const STATUS_OFFER = 'offer';
+    const STATUS_WON = 'won';
+    const STATUS_VISIT = 'visit';
+    const STATUS_LOST = 'lost';
 
 
     static function getStatus() {
@@ -68,10 +68,10 @@ class Mail extends Model
             self::STATUS_NEW => trans('panel.status_new'),
             self::STATUS_VIEW => trans('panel.status_view'),
             self::STATUS_WORK => trans('panel.status_work'),
-            self::STATUS_CLOSE => trans('panel.status_close'),
-            self::STATUS_CANCELLED => trans('panel.status_cancelled'),
-            self::STATUS_STOPPED => trans('panel.status_stopped'),
-
+            self::STATUS_OFFER => trans('panel.status_offer'),
+            self::STATUS_WON => trans('panel.status_won'),
+            self::STATUS_VISIT => trans('panel.status_visit'),
+            self::STATUS_LOST => trans('panel.status_lost'),
 
         ];
     }

@@ -43,6 +43,7 @@ Route::get('/policy', '\App\Http\Controllers\Client\CommonPage\IndexController@p
 
 Route::post('/webhook-our-chat', '\App\Http\Controllers\Admin\Webhook\ChatWebhookController@webhookHandler');
 Route::post('/maib-callback', '\App\Http\Controllers\Admin\Webhook\OrderWebhookController@webhookHandler');
+Route::post('/odo-sync-callback', '\App\Http\Controllers\Admin\Webhook\OrderWebhookController@webhookOdoSynchronization');
 
 Route::get('/user-signup', '\App\Http\Controllers\Auth\UserAuthController@signup')->name('client.signup');
 Route::post('/user-signup', '\App\Http\Controllers\Auth\UserAuthController@postSignup')->name('client.postSignup');
@@ -409,6 +410,7 @@ Route::group(['prefix' => 'panel'],function () {
             Route::post('/{parser}', '\App\Http\Controllers\Admin\Scraper\ScraperController@send')->name('scraper.send');
 
             Route::get('/hurakan', '\App\Http\Controllers\Admin\Scraper\ScraperController@hurakan')->name('hurakan');
+            Route::get('/update-price1c', '\App\Http\Controllers\Admin\Scraper\ScraperController@updatePrice1c')->name('updatePrice1c');
         });
         Route::group(['prefix' => 'search-settings'], function() {
             Route::get('/', '\App\Http\Controllers\Admin\Settings\SearchController@index')->name('searchSettings');

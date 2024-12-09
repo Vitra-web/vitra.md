@@ -27,7 +27,10 @@ class MailController extends Controller
 
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
+
         $careerFormSend = new FormSend('https://vitraserv1c.vitra.md/crm-webhook-form');
         $careerFormSend->sendVacancy($data);
 //        Mail::to('info@vitra.md')->send(new ContactMail($data));
@@ -50,6 +53,8 @@ class MailController extends Controller
         $userPath = request()->cookie('userPath');
        $data['source'] = 1;
         $data['user_path'] = $userPath;
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
        \App\Models\Mail::firstOrCreate($data);
        if($data['product_id']) {
            $product = Product::where('id',$data['product_id'] )->first();
@@ -77,6 +82,8 @@ class MailController extends Controller
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
         $data['source'] = 2;
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
 //        Mail::to('info@vitra.md')->send(new ContactMail($data));
         $careerFormSend = new FormSend('https://vitraserv1c.vitra.md/crm-webhook-form');
@@ -98,6 +105,8 @@ class MailController extends Controller
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
         $data['source'] = 3;
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
         $careerFormSend = new FormSend('https://vitraserv1c.vitra.md/crm-webhook-form');
         $careerFormSend->sendVacancy($data);
@@ -126,7 +135,8 @@ class MailController extends Controller
         }
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
-//                dd($data);
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
 //dd($data);
         $careerFormSend = new FormSend('https://vitraserv1c.vitra.md/crm-webhook-form');
@@ -163,8 +173,9 @@ class MailController extends Controller
         }
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
-
 
         $vacancy = Vacancy::where('id', $data['vacancy_id'])->first();
         $data['vacancy']= $vacancy->name_ro;
@@ -220,7 +231,8 @@ class MailController extends Controller
         }
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
-
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
 
         $vacancy = Vacancy::where('id', $data['vacancy_id'])->first();
@@ -247,7 +259,8 @@ class MailController extends Controller
         }
         $userPath = request()->cookie('userPath');
         $data['user_path'] = $userPath;
-
+        $mailId = strval(rand(1000000,9999999)) ;
+        $data['order_number'] =$mailId;
         \App\Models\Mail::firstOrCreate($data);
 //        Mail::to('iura.radulov@gmail.com')->send(new VacancyMail($data, $file));
         $careerFormSend = new FormSend('https://vitraserv1c.vitra.md/hr-webhook-form');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Classes\FormSend;
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\Models\Mail;
@@ -60,6 +61,32 @@ class OrderController extends Controller
         $products = json_decode($order->products);
         if($order->status == 'new')
             $order->update(['status'=>'viewed']);
+
+        if(Auth::user()->role_id == 3) {
+            $userViewed = json_decode($order->user_viewed);
+            if($userViewed && count($userViewed) >0) {
+                $addManager = 0;
+                foreach ($userViewed as $item) {
+                    if($item->id == Auth::user()->id) {
+                        break;
+                    } else $addManager = 1;
+                }
+                if($addManager) {
+                    $userViewed[]= [
+                        'id'=>Auth::user()->id,
+                        'name'=>Auth::user()->name,
+                    ];
+                    $order->update(['user_viewed'=>json_encode($userViewed)]);
+                }
+            } else {
+                $userViewed = [
+                    'id'=>Auth::user()->id,
+                    'name'=>Auth::user()->name,
+                ];
+                $order->update(['user_viewed' => json_encode([$userViewed])]);
+            };
+        }
+
         foreach ($products as $product) {
 //            dump($product->product_variant);
             $product->product = Product::where('id',$product->product->id )->first();
@@ -71,7 +98,9 @@ class OrderController extends Controller
             }
         }
 
+//        if(Auth::user()->id ==1)
 //        dd($products);
+
         return view('panel.orders.edit', compact('title', 'order', 'products', 'managers'));
 
     }
@@ -110,6 +139,21 @@ class OrderController extends Controller
         elseif(! $data['manager_id'])
             $data['manager_id']= $user->id;
 
+        if($data['manager_id'])
+            $manager = User::where('id', $data['manager_id'])->first() ;
+        else $manager = $user;
+
+        $synchronizationData = [
+            "order_number"=> $order->order_number,
+            "manager_email"=> $manager->email,
+            "manager_login"=> $manager->login,
+            "status"=> $data['status'],
+        ];
+
+        if($data['status'] != 'viewed') {
+            $syncSend = new FormSend('https://vitraserv1c.vitra.md/sync-callback-crm');
+            $syncSend->sendVacancy($synchronizationData);
+        }
 
         $order->update($data);
 

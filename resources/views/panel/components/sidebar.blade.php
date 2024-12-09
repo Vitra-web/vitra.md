@@ -18,7 +18,7 @@
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                @if($user->role_id == 1 || $user->role_id == 3 || $user->role_id == 5 || $user->role_id == 6)
                 <li class="nav-item {{$current_route == 'statistic' ? 'active':''}}">
                     <a href="{{route('statistic')}}" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -26,7 +26,8 @@
                         <p class="text-blue ms-2" style="font-size:12px">{{isset($newMessages) && count($newMessages) >0 ? count($newMessages) : ''}}</p>
                     </a>
                 </li>
-
+                @endif
+                @if($user->role_id == 1 || $user->role_id == 3 || $user->role_id == 5 )
                 <li class="nav-item {{$current_route == 'orders' ? 'active':''}}">
                     <a href="{{route('orders')}}" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
@@ -34,7 +35,7 @@
                         <p class="text-blue ms-2" style="font-size:12px">{{isset($newOrders) && count($newOrders) >0 ? count($newOrders) : ''}}</p>
                     </a>
                 </li>
-
+                @endif
                 @if($user->role_id == 1 || $user->role_id == 2 || $user->role_id == 5)
                 <li class="nav-item menu-close">
                     <a href="#" class="nav-link">

@@ -10,8 +10,14 @@
             <div class="row mb-2">
                 <div class="col-sm-2">
                     <h1 class="m-0">{{$title}}</h1>
-                </div><!-- /.col -->
+                </div>
 
+                @if(\Illuminate\Support\Facades\Auth::user()->role_id == 1)
+                <div class="col-sm-2">
+                    <a href="{{route('updatePrice1c')}}" class="btn btn-primary" type="button">Update price 1c</a>
+                </div>
+
+                @endif
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

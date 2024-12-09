@@ -7,6 +7,12 @@
          $statusColor = 'btn-outline-primary';
      elseif($mail->status == 2 )
         $statusColor = 'btn-outline-success';
+
+$currentUser = \Illuminate\Support\Facades\Auth::user();
+$adminUser = $currentUser->role_id == 1;
+$managerUser = $currentUser->role_id == 3;
+$directorManagerUser = $currentUser->role_id == 5;
+$recruiterUser = $currentUser->role_id == 6;
 @endphp
 @section('content')
            <!-- Content Header (Page header) -->
@@ -40,43 +46,20 @@
                     @csrf
                     @method('patch')
                     <div class="row mb-3">
-                        {{--                    <div class="position-relative col-2">--}}
-                        {{--                        <p>{{trans('panel.status')}}</p>--}}
-                        {{--                        <button class="btn {{$statusColor}}" id="status_btn">{{$mail->statusName}}</button>--}}
-                        {{--                        <div class="status_block">--}}
-                        {{--                            <div>--}}
-                        {{--                                <a href="{{route('statistic.changeStatus', [$mail->id, 0] )}}" class="status_link {{$mail->status == 0 ? 'active': ''}}">--}}
-                        {{--                                    <img class="status_image" src="{{asset('images/admin-panel/mail.png')}}" alt="new message">--}}
-                        {{--                                    <span class="text-danger">{{trans('panel.status_new')}}</span>--}}
-                        {{--                                </a>--}}
-
-
-                        {{--                                <a href="{{route('statistic.changeStatus', [$mail->id, 1] )}}" class="status_link {{$mail->status == 1 ? 'active': ''}}">--}}
-                        {{--                                    <img class="status_image" src="{{asset('images/admin-panel/view.png')}}" alt="new message">--}}
-                        {{--                                    <span class="text-primary">{{trans('panel.status_view')}}</span>--}}
-                        {{--                                </a>--}}
-
-                        {{--                                <a href="{{route('statistic.changeStatus', [$mail->id, 2] )}}" class="status_link {{$mail->status == 2 ? 'active': ''}}">--}}
-                        {{--                                    <img class="status_image" src="{{asset('images/admin-panel/resend.png')}}" alt="new message">--}}
-                        {{--                                    <span class="text-success">{{trans('panel.status_answered')}}</span>--}}
-                        {{--                                </a>--}}
-
-                        {{--                            </div>--}}
-
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
+                        @if($adminUser || $managerUser || $directorManagerUser)
                         <div class="form-group col-2">
                             <label class="pl-3" for="status">{{trans('panel.status')}}</label>
                             <select class="custom-select form-control" name="status" id="status" >
                                 <option value="viewed" {{$mail->status == 'viewed' ? 'selected' : ''}}>{{trans('panel.status_view')}}</option>
                                 <option value="work" {{$mail->status == 'work' ? 'selected' : ''}}>{{trans('panel.status_work')}}</option>
-                                <option value="close" {{$mail->status == 'close' ? 'selected' : ''}}>{{trans('panel.status_close')}}</option>
-                                <option value="cancelled" {{$mail->status == 'cancelled' ? 'selected' : ''}}>{{trans('panel.status_cancelled')}}</option>
-                                <option value="stopped" {{$mail->status == 'stopped' ? 'selected' : ''}}>{{trans('panel.status_stopped')}}</option>
+                                <option value="offer" {{$mail->status == 'offer' ? 'selected' : ''}}>{{trans('panel.status_offer')}}</option>
+                                <option value="won" {{$mail->status == 'won' ? 'selected' : ''}}>{{trans('panel.status_won')}}</option>
+                                <option value="visit" {{$mail->status == 'visit' ? 'selected' : ''}}>{{trans('panel.status_visit')}}</option>
+                                <option value="lost" {{$mail->status == 'lost' ? 'selected' : ''}}>{{trans('panel.status_lost')}}</option>
                             </select>
                         </div>
-
-                        @if(\Illuminate\Support\Facades\Auth::user()->role_id != 3)
+                        @endif
+                        @if($adminUser || $directorManagerUser)
                         <div class="form-group ms-3 col-2">
                             <label class="pl-3" for="manager_id">{{trans('panel.managers')}}</label>
                             <select class="custom-select form-control" name="manager_id" id="manager_id" >
@@ -190,13 +173,15 @@
 
 
                 </div>
-
+                    @if($adminUser || $managerUser || $directorManagerUser)
                     <div class="form-group text-center d-flex justify-content-center">
                         <input type="submit" class="btn btn-primary" id="saveBtn" name="update" value="{{trans('panel.save')}}">
                         <div class="spinner-border text-primary ms-2" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                     </div>
+                    @endif
+
                 </form>
             </div><!-- /.container-fluid -->
         </section>

@@ -1,4 +1,10 @@
+@php
+    $currentUser = \Illuminate\Support\Facades\Auth::user();
+    $adminUser = $currentUser->role_id == 1;
+    $managerUser = $currentUser->role_id == 3;
+    $directorManagerUser = $currentUser->role_id == 5;
 
+@endphp
 
 @extends('layouts.admin')
 
@@ -156,8 +162,28 @@
                             </thead>
                             <tbody>
                             @foreach($orders as $order)
-                                <tr style="background-color: {{$order->status== 'new' ? '#bcd5e5': 'white' }} "  class='clickable-row' data-href='{{route('order.show', $order->id)}}'>
-                                    <td> {{$order->statusTitle}}</td>
+                                <tr style="background-color: {{$order->status== 'new' ? '#bcd5e5': 'white' }} "  class='clickable-row' onclick="handleLink(this)" onmouseenter="showUserList(this)" onmouseleave="hideUserList(this)" data-href='{{route('order.show', $order->id)}}'>
+                                    <td>
+                                        @if($adminUser || $directorManagerUser)
+                                            <div class="position-relative" >
+                                                {{$order->statusTitle}}
+                                                @if($order->user_viewed)
+                                                    <div class="status_hover_block">
+
+                                                        @if(count(json_decode($order->user_viewed)) > 0)
+                                                            @foreach(json_decode($order->user_viewed) as $item)
+                                                                <p class="manager_name"> {{$item->name}}</p>
+
+                                                            @endforeach
+                                                        @endif
+
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        @else
+                                            {{$order->statusTitle}}
+                                        @endif
+                                    </td>
                                     <td> {{$order->created_at}} </td>
                                     <td> {{isset($order->manager->name)? $order->manager->name: '-'}}</td>
                                     <td> {{$order->deliveryName}}</td>
@@ -228,7 +254,7 @@
                 </div>
 
             </div><!-- /.container-fluid -->
-            {{--@dump($mails)--}}
+            {{--@dump($orders)--}}
             {{--@dump($orders['total'])--}}
         </section>
 
@@ -329,9 +355,21 @@
                     // }]
                 });
 
-                $(".clickable-row").click(function() {
-                    window.location = $(this).data("href");
-                });
+                function handleLink(el) {
+                    window.location =el.dataset.href
+                }
+                function showUserList(el) {
+                    if(el.querySelector('.status_hover_block')) {
+                        el.querySelector('.status_hover_block').classList.add('active')
+                    }
+                }
+
+                function hideUserList(el) {
+                    if(el.querySelector('.status_hover_block')) {
+                        el.querySelector('.status_hover_block').classList.remove('active')
+                    }
+                }
+
 
             </script>
 
@@ -341,6 +379,21 @@
 
                 .clickable-row {
                     cursor:pointer;
+                }
+
+                .status_hover_block {
+                    display: none;
+                    position: absolute;
+                    top: 50px;
+                    left: 20px;
+                    z-index: 10;
+                    padding: 7px;
+                    border-radius: 8px;
+                    background-color: #f3f0f0;
+                    color: #0a0a0a;
+                }
+                .status_hover_block.active {
+                    display: block;
                 }
 
                 table {
